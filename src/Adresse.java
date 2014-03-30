@@ -63,8 +63,5 @@ public class Adresse {
 		System.out.println(plz + ort);
 		System.out.println(land);
 		
-	}
-	
-	
-	
+	}	
 }
