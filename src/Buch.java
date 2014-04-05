@@ -4,10 +4,10 @@ public class Buch extends Medium {
 	//Attribute
 	private String verfasser;
 	private String verlag;
-	private int isbn;
+	private String isbn;
 	
 	//Konstruktor
-	public Buch(String titel, int jahr, String verfasser, String verlag, int isbn) {
+	public Buch(String titel, int jahr, String verfasser, String verlag, String isbn) {
 		super(titel, jahr);
 		signatur="B-" + mediumID;
 		
@@ -33,11 +33,11 @@ public class Buch extends Medium {
 		this.verlag = verlag;
 	}
 
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 	
