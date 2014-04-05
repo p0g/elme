@@ -10,7 +10,6 @@ public class Buch extends Medium {
 	public Buch(String titel, int jahr, String verfasser, String verlag, String isbn) {
 		super(titel, jahr);
 		signatur="B-" + mediumID;
-		
 		this.verfasser=verfasser;
 		this.verlag=verlag;
 		this.isbn=isbn;
