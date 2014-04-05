@@ -1,3 +1,4 @@
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -5,17 +6,21 @@ import java.awt.event.WindowListener;
 
 import javax.swing.*;
 
-public class LoginGUI extends JFrame{
+public class LoginGUI extends JDialog{
 
 	//Attribute
 	private Mitgliederverwaltung mv;
 	private JLabel lbl;
 	private JTextField tf1;
 	private JTextField tf2;
+	private boolean erfolg;
 	
 	
 	//Konstruktor
-	public LoginGUI(Mitgliederverwaltung mv){
+	public LoginGUI(Frame frame, Mitgliederverwaltung mv){
+		
+		super(frame,"Login",true);
+		
 		//Fachlicher Teil
 		this.mv=mv;
 		
@@ -119,15 +124,23 @@ public class LoginGUI extends JFrame{
 		}
 		
 		if(test==false){
+			// Set the input fields empty and show an general error
 			tf1.setText("");
 			tf2.setText("");
 			lbl.setVisible(true);
 			
 		}
 		else{
-			tf1.setText("Herzlichen");
-			tf2.setText("Glückwunsch!");
+			erfolg = true;
+			this.setVisible(false);
+			dispose();
+			//tf1.setText("Herzlichen");
+			//tf2.setText("Glückwunsch!");
 			
 		}
+	}
+	
+	public boolean isErfolg(){
+		return erfolg;
 	}
 }
