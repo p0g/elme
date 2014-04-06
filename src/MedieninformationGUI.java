@@ -332,7 +332,6 @@ public class MedieninformationGUI extends JDialog{
 	}
 
 	private void entleihe(){
-			lv.addLeihe(mg, m);
-			
+			mg.addLeihe(m);			
 		}
 }

@@ -142,7 +142,7 @@ public class LoginGUI extends JDialog{
 			setMitglied(mitglied);
 			erfolg = true;
 			this.setVisible(false);
-			dispose();
+			//dispose();
 			//tf1.setText("Herzlichen");
 			//tf2.setText("Glückwunsch!");
 			

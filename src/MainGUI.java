@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 
 public class MainGUI extends JDialog {
 
@@ -25,6 +26,7 @@ public class MainGUI extends JDialog {
 
 	private JButton btn_leihen;
 	private JButton btn_logout;
+	private JButton btn_search;
 	private JTextField tf_search;
 
 	public static ArrayList<String> al = new ArrayList<String>();
@@ -32,9 +34,7 @@ public class MainGUI extends JDialog {
 	// Constructor
 	public MainGUI(final Frame frame, final Mitglied mitglied, ArrayList<Medium> medien) {
 
-		super(frame, "Hauptmenü", true);
-		
-		
+		super(frame, "Hauptmenü", true);		
 
 		JPanel pan = new JPanel();
 		pan.setLayout(null);
@@ -42,8 +42,17 @@ public class MainGUI extends JDialog {
 		tf_search = new JTextField();
 		tf_search.setSize(200, 20);
 		tf_search.setLocation(30, 30);
-		tf_search.setText(" Suche");
-		//pan.add(tf_search);
+		//tf_search.setText(" Suche");
+		pan.add(tf_search);
+		
+		btn_search = new JButton("Logout");
+		btn_search.setSize(150, 20);
+		btn_search.setLocation(300, 110);
+		btn_search.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Login();
+			}
+		});
 
 		btn_leihen = new JButton("Leihfristen einsehen");
 		btn_leihen.setSize(150, 20);
@@ -65,22 +74,8 @@ public class MainGUI extends JDialog {
 		});
 		pan.add(btn_logout);
 		
-		
-
-		//String interessen[] = { "Politik", "Autos", "Mode",
-		//		"Film- und Fernsehen", "Computer", "Tiere", "Sport" };
-		
-		
-		
-
 		// JList mit Einträgen wird erstellt
 		final JList list_medien = new JList(medien.toArray());
-
-		list_medien.setSize(200, 400);
-		list_medien.setLocation(30, 80);
-
-		// JList wird Panel hinzugefügt
-		
 
 		list_medien.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -93,6 +88,33 @@ public class MainGUI extends JDialog {
 				}
 			}
 		});
+		
+		list_medien.setSize(200, 400);
+		list_medien.setLocation(30, 80);
+		
+		tf_search.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+            	
+                ListModel model = list_medien.getModel();
+                String suchtext = tf_search.getText().trim();
+                if (suchtext == null || suchtext.equals("")){
+                	list_medien.setSelectedIndex(-1);
+                	
+                    return;
+                    
+                }
+                int size = model.getSize();
+                for (int i = 0; i < size; i++) {
+                    Object o = model.getElementAt(i);
+                    if (o.toString().equals(suchtext)) {
+                    	list_medien.setSelectedIndex(i);
+                        return;
+                    }
+                }
+            }
+        });
+		
+		
 		
 		pan.add(list_medien);
 

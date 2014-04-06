@@ -31,8 +31,10 @@ public class Mitglied {
 
 	//Methoden
 	
-	public void addLeihe(Leihe l){
+	public void addLeihe(Medium m){
+		Leihe l = new Leihe(this, m);
 		leihen.add(l);
+		m.setEntliehen(true);
 	}
 	
 	/**
