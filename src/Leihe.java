@@ -10,25 +10,20 @@ public class Leihe {
 	private int mitgliedID;
 	private Date datum;
 	private Mitglied besitzer;
-	private ArrayList<Medium> medien;
+	private Medium medium;
 
 	//Konstruktor
-	public Leihe(int mitgliedID, Date datum, Mitglied besitzer) {
+
+	public Leihe(int mitgliedID, Date datum, Mitglied besitzer, Medium m) {
 		this.mitgliedID = mitgliedID;
 		this.datum = datum;
-		this.besitzer=besitzer;
-		leihID=ANZAHL++;
-		medien=new ArrayList<Medium>();
+		this.besitzer = besitzer;
 	}
 
 	public int getMitgliedID() {
 		return mitgliedID;
 	}
 
-	public ArrayList<Medium> getMedienliste(){
-		return medien;
-		
-	}
 	
 	public Date getDatum() {
 		return datum;
@@ -38,17 +33,18 @@ public class Leihe {
 		return besitzer;
 	}
 	
-	public void addMedium(Medium m){
-		medien.add(m);
+	public void setMedium(Medium m){
+		this.medium = m;
+	}
+	
+	public Medium getMedium(){
+		return this.medium;
 	}
 	
 	public void druckeDaten(){
 		System.out.println("Leihe No. "+leihID);
 		System.out.println("MitgliedID: "+mitgliedID);
-		for(Medium m:medien){
-			System.out.println("Medium: "+m.getTitel());
-			
-		}
+		System.out.println("Medium: "+medium.getTitel());
 	}
 	
 	
