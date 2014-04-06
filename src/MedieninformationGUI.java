@@ -7,7 +7,7 @@ import java.awt.event.WindowListener;
 import javax.swing.*;
 
 
-public class MedieninformationGUI extends JFrame{
+public class MedieninformationGUI extends JDialog{
 	
 	/*Klasse ist noch nicht fertig. Bitte noch nichts ändern!
 	 * Danke, 
@@ -32,6 +32,7 @@ public class MedieninformationGUI extends JFrame{
 		this.setLocation(550, 300);
 		this.setResizable(false);
 		this.setLayout(null);
+		this.setModal(true);
 		this.setLocationRelativeTo(f);
 		this.addWindowListener(new WindowListener(){
 
