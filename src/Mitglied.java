@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -14,6 +15,8 @@ public class Mitglied {
 	//statische Variable nur für internen Gebrauch. initial 1, weil sonst die generierung der benutzernamen bei 0 beginnen würde!
 	private static int ANZAHL=1;
 	
+	private ArrayList<Leihe> leihen = new ArrayList<Leihe>();
+	
 	//Konstruktor
 	public Mitglied(String name, String vorname, String passwort, String geburtsdatum, Adresse adresse) {
 		this.name = name;
@@ -27,6 +30,29 @@ public class Mitglied {
 	}
 
 	//Methoden
+	
+	public void addLeihe(Leihe l){
+		leihen.add(l);
+	}
+	
+	/**
+	 * Holt eine Leihe anhand eines Mediums
+	 * @param m Medium
+	 * @return gefundene Leihe oder Null
+	 */
+	public Leihe getLeihe(Medium m){
+		for(Leihe leihe : leihen){
+			if(leihe.getMedium().equals(m)){
+				return leihe;			
+			}			
+		}
+		return null;
+	}
+	
+	public void removeLeihe(Leihe l){
+		leihen.remove(l);
+	}
+	
 	public String getName() {
 		return name;
 	}
