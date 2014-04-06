@@ -49,6 +49,10 @@ public class Mitglied {
 		return null;
 	}
 	
+	public ArrayList<Leihe> getLeihen(){
+		return leihen;
+	}
+	
 	public void removeLeihe(Leihe l){
 		leihen.remove(l);
 	}

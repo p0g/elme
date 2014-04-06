@@ -9,13 +9,6 @@ public class Mitgliederverwaltung {
 	//Konstruktor
 	public Mitgliederverwaltung(){
 		mitglieder=new ArrayList<Mitglied>();
-		
-		/*Zu Testzwecken wird hier bereits automatisiert ein Mitglied eingefügt,
-		 * um eine Zeitintensive registrierung bei jedem test zu umgehen*/
-		
-		Adresse ad01=new Adresse("EFS", 44, 44227, "Dortmund", "DE");
-		Mitglied mg01=new Mitglied("Mustermann", "Max", "test", "27.1.82", ad01);
-		addMitglied(mg01);
 	}
 	
 	//Methoden

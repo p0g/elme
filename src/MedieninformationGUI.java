@@ -1,3 +1,4 @@
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -22,7 +23,7 @@ public class MedieninformationGUI extends JFrame{
 	private Medium m;
 	
 	//Konstruktor
-	public MedieninformationGUI(Medium m, Mitglied mg, Leiheverwaltung lv){
+	public MedieninformationGUI(Frame f, Medium m, Mitglied mg, Leiheverwaltung lv){
 		this.mg=mg;
 		this.lv=lv;
 		this.m=m;
@@ -31,6 +32,7 @@ public class MedieninformationGUI extends JFrame{
 		this.setLocation(550, 300);
 		this.setResizable(false);
 		this.setLayout(null);
+		this.setLocationRelativeTo(f);
 		this.addWindowListener(new WindowListener(){
 
 			public void windowActivated(WindowEvent arg0) {
@@ -154,6 +156,7 @@ public class MedieninformationGUI extends JFrame{
 		JButton btn = new JButton("Entleihen");
 		btn.setBounds(415, 75, 150, 20);
 		btn.addActionListener(new ActionListener(){
+
 
 			public void actionPerformed(ActionEvent arg0) {
 				entleihe();

@@ -7,12 +7,14 @@ public abstract class Medium {
 	protected String signatur;
 	protected String titel;
 	protected int jahr;
+	protected boolean entliehen;
 	
 	//Konstruktor
 	public Medium(String titel, int jahr){
 		mediumID=ANZAHL++;
 		this.titel=titel;
 		this.jahr=jahr;
+		entliehen=false;
 		
 	}
 
@@ -49,6 +51,17 @@ public abstract class Medium {
 		this.jahr = jahr;
 	}
 	
+	public boolean isEntliehen(){
+		return this.entliehen;
+	}
+	
+	public void setEntliehen(boolean entliehen){
+		this.entliehen=entliehen;
+	}
+	
+	public String toString(){
+		return this.titel;
+	}
 	
 	
 }

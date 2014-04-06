@@ -1,5 +1,8 @@
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 public class Leihe {
@@ -13,9 +16,19 @@ public class Leihe {
 
 	//Konstruktor
 	
-	public Leihe(int mitgliedID, Date datum, Mitglied mitglied, Medium m) {
-		this.datum = datum;
+	public Leihe(Mitglied mitglied, Medium medium) {
+		this.datum = new Date(); // Ausleihdatum auf heute setzen
+		verlaenger();			 // Ausleihdatum einmal verlaengern
 		this.mitglied = mitglied;
+		this.medium = medium;
+	}
+	
+	public void verlaenger(){
+		//TODO: Entsprechend dem Medium das Endleihdatum ermitteln. Im Moment einfach 14 Tage drauf
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(this.datum);
+		calendar.add(Calendar.DAY_OF_MONTH, 14);
+		this.datum = calendar.getTime();
 	}
 
 	public Date getDatum() {
