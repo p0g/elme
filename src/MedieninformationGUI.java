@@ -17,8 +17,8 @@ public class MedieninformationGUI extends JFrame{
 	private JPanel pan;
 	
 	//Konstruktor
-	public MedieninformationGUI(Medium m/*, MainGUI win*/){
-		//win.setEnabled(false);
+	public MedieninformationGUI(Medium m, MainGUI win){
+		win.setEnabled(false);
 		
 		this.setSize(600, 400);
 		this.setLocation(550, 300);
@@ -38,8 +38,7 @@ public class MedieninformationGUI extends JFrame{
 				setVisible(false);
 				//dispose();
 				
-				//AUF JEDEN FALL SPAETER ENTFERNEN, NUR FUER TESTZWECKE!
-				System.exit(0);
+			
 				
 			}
 
