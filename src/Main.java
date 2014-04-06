@@ -20,8 +20,7 @@ public class Main {
         //frame.setVisible(true);
         
         if(login.isErfolg()){
-        	// Login is ok
-        	
+        	// Login is ok        	
         	
         	// Hole eingeloggtes Mitglied
         	Mitglied mitglied = login.getMitglied();

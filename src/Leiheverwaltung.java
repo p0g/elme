@@ -19,8 +19,7 @@ public class Leiheverwaltung {
 	
 	public void addMedium(Leihe l, Medium m){
 		
-	}
-	
+	}	
 	
 	
 

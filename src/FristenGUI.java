@@ -15,7 +15,7 @@ public class FristenGUI extends JDialog {
 	public FristenGUI(Frame frame, Leihe leihe) {
 		
 		JPanel panel = new JPanel();
-		panel.add(new JLabel("Ihr JDialog"));
+		panel.add(new JLabel("Dialog"));
 		
 		
 		this.add(panel);
@@ -24,7 +24,6 @@ public class FristenGUI extends JDialog {
 		this.setLocationRelativeTo(frame);
 		this.setVisible(true);
 	}
-
 	
 
 	

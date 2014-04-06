@@ -122,8 +122,7 @@ public class LoginGUI extends JDialog{
 		String name=tf1.getText();
 		String pw=tf2.getText();
 		boolean test=false;
-		
-		
+				
 		
 		try {
 			mitglied = mv.validiere(name, pw);
