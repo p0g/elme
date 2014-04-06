@@ -25,6 +25,7 @@ public class LoginGUI extends JDialog{
 		
 		super(frame,"Login",true);
 		
+		
 		//Fachlicher Teil
 		this.mv=mv;
 		
