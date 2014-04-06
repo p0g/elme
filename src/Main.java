@@ -12,19 +12,27 @@ public class Main {
 		/* Create new MainFrame */
 		final JFrame frame = new JFrame("Verwaltung");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 800);
+        frame.setSize(600, 600);
+        frame.setResizable(false);
+		frame.setLocation(550, 300);
 		
         LoginGUI login = new LoginGUI(frame, mv);
         //frame.setVisible(true);
         
         if(login.isErfolg()){
         	// Login is ok
-        	//Leiheverwaltung lv = new Leiheverwaltung();
+        	
+        	
+        	// Hole eingeloggtes Mitglied
+        	Mitglied mitglied = login.getMitglied();
+        	
+        	
+        	Leiheverwaltung lv = new Leiheverwaltung();
         	
         	
         	
         	// Login is ok, load the Mainmenu
-        	//MainGui main = new MainGui(frame, mv);
+        	MainGUI main = new MainGUI(frame, mitglied);
         }
 		
 		

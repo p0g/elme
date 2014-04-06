@@ -32,10 +32,10 @@ public class Mitgliederverwaltung {
 	 * Checks if the used password is valid
 	 * @param benutzername
 	 * @param angeblichesPasswort
-	 * @return
+	 * @return The Member (if pwcheck is valid)
 	 * @throws MitgliedNichtExistentException
 	 */
-	public boolean validiere(String benutzername, String angeblichesPasswort) throws MitgliedNichtExistentException {
+	public Mitglied validiere(String benutzername, String angeblichesPasswort) throws MitgliedNichtExistentException {
 		Mitglied m=null;
 		
 		// Check if the used membername is in the list
@@ -51,7 +51,11 @@ public class Mitgliederverwaltung {
 		}
 		else{
 			// Try to validate the password
-			return m.validierePasswort(angeblichesPasswort);			
+			if(m.validierePasswort(angeblichesPasswort)){
+				return m;
+			}else{
+				return null;
+			}
 		}
 		
 		

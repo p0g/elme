@@ -13,7 +13,11 @@ public class LoginGUI extends JDialog{
 	private JLabel lbl;
 	private JTextField tf1;
 	private JTextField tf2;
+	private JButton btn;
 	private boolean erfolg;
+	
+	// Eingeloggtes Mitgliedsobjekt
+	Mitglied mitglied = null;
 	
 	
 	//Konstruktor
@@ -48,14 +52,16 @@ public class LoginGUI extends JDialog{
 		tf1=new JTextField();
 		tf1.setSize(120, 20);
 		tf1.setLocation(165, 50);
+		tf1.setText("MaMus1");
 		pan.add(tf1);
 		
 		tf2=new JTextField();
 		tf2.setSize(120, 20);
 		tf2.setLocation(165, 80);
+		tf2.setText("test");
 		pan.add(tf2);
 		
-		JButton btn = new JButton("Einloggen");
+		btn = new JButton("Einloggen");
 		btn.setSize(100, 20);
 		btn.setLocation(135, 130);
 		btn.addActionListener(new ActionListener(){
@@ -117,13 +123,15 @@ public class LoginGUI extends JDialog{
 		String pw=tf2.getText();
 		boolean test=false;
 		
+		
+		
 		try {
-			test = mv.validiere(name, pw);
+			mitglied = mv.validiere(name, pw);
 		} catch (MitgliedNichtExistentException e) {
-			test=false;
+			
 		}
 		
-		if(test==false){
+		if(mitglied == null){
 			// Set the input fields empty and show an general error
 			tf1.setText("");
 			tf2.setText("");
@@ -131,6 +139,7 @@ public class LoginGUI extends JDialog{
 			
 		}
 		else{
+			setMitglied(mitglied);
 			erfolg = true;
 			this.setVisible(false);
 			dispose();
@@ -140,7 +149,22 @@ public class LoginGUI extends JDialog{
 		}
 	}
 	
+	
+
 	public boolean isErfolg(){
 		return erfolg;
+	}
+	
+	private void setMitglied(Mitglied mitglied) {
+		this.mitglied = mitglied;
+		
+	}
+
+	/**
+	 * 
+	 * @return The Logined Mitglied
+	 */
+	public Mitglied getMitglied() {
+		return this.mitglied;
 	}
 }
