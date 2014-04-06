@@ -29,8 +29,7 @@ public class Mitglied {
 		benutzername=vorname.substring(0,2) + name.substring(0,3) + mitgliedID;
 	}
 
-	//Methoden
-	
+	//Methoden	
 	public void addLeihe(Leihe l){
 		leihen.add(l);
 	}

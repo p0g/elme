@@ -13,7 +13,6 @@ public class Leihe {
 	private Medium medium;
 
 	//Konstruktor
-
 	public Leihe(int mitgliedID, Date datum, Mitglied besitzer, Medium m) {
 		this.mitgliedID = mitgliedID;
 		this.datum = datum;
