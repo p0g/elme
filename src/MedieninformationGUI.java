@@ -1,3 +1,5 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -15,12 +17,17 @@ public class MedieninformationGUI extends JFrame{
 	
 	//Attribute/Komponenten
 	private JPanel pan;
+	private Mitglied mg;
+	private Leiheverwaltung lv;
+	private Medium m;
 	
 	//Konstruktor
-	public MedieninformationGUI(Medium m, MainGUI win){
-		win.setEnabled(false);
+	public MedieninformationGUI(Medium m, Mitglied mg, Leiheverwaltung lv){
+		this.mg=mg;
+		this.lv=lv;
+		this.m=m;
 		
-		this.setSize(600, 400);
+		this.setSize(600, 250);
 		this.setLocation(550, 300);
 		this.setResizable(false);
 		this.setLayout(null);
@@ -36,7 +43,7 @@ public class MedieninformationGUI extends JFrame{
 			public void windowClosed(WindowEvent arg0) {
 				setEnabled(false);
 				setVisible(false);
-				//dispose();
+				dispose();
 				
 			
 				
@@ -44,7 +51,7 @@ public class MedieninformationGUI extends JFrame{
 
 			@Override
 			public void windowClosing(WindowEvent arg0) {
-				System.exit(0);
+			
 				
 			}
 
@@ -73,7 +80,7 @@ public class MedieninformationGUI extends JFrame{
 			}});
 		
 		pan = new JPanel();
-		pan.setSize(500, 500);
+		pan.setSize(600, 250);
 		pan.setLayout(null);
 		
 		//Umständlicher IF-Scheiß mit Methoden deshalb, weil es mMn besser erweiterbar und wartbar ist als wenn man den Konstruktor überlädt
@@ -104,7 +111,84 @@ public class MedieninformationGUI extends JFrame{
 	//Methoden
 
 	private void createABookWindow(Buch b){
+
+		//Titel
+		JLabel lab = new JLabel("Titel:");
+		lab.setBounds(50, 50, 150, 20);
+		pan.add(lab);
 		
+		lab = new JLabel(b.getTitel());
+		lab.setBounds(205, 50, 200, 20);
+		pan.add(lab);
+		
+		//Interpret
+		lab = new JLabel("Interpret:");
+		lab.setBounds(50, 75, 150, 20);
+		pan.add(lab);
+		
+		lab = new JLabel(b.getVerfasser());
+		lab.setBounds(205, 75, 200, 20);
+		pan.add(lab);
+		
+		//Erscheinungsahr
+		lab = new JLabel("Erscheinungsjahr:");
+		lab.setBounds(50, 100, 150, 20);
+		pan.add(lab);
+		
+		lab = new JLabel(Integer.toString(b.getJahr()));
+		lab.setBounds(205, 100, 200, 20);
+		pan.add(lab);
+		
+		//Label
+		lab = new JLabel("Label:");
+		lab.setBounds(50, 125, 150, 20);
+		pan.add(lab);
+		
+		lab = new JLabel(b.getVerlag());
+		lab.setBounds(205, 125, 200, 20);
+		pan.add(lab);
+		
+		//ISBN
+		lab = new JLabel("ISBN:");
+		lab.setBounds(50, 150, 150, 20);
+		pan.add(lab);
+		
+		lab = new JLabel(b.getIsbn());
+		lab.setBounds(205, 150, 200, 20);
+		pan.add(lab);
+		
+		//Button
+		JButton btn = new JButton("Entleihen");
+		btn.setBounds(415, 75, 150, 20);
+		btn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				entleihe();
+				
+				setEnabled(false);
+				setVisible(false);
+				dispose();
+				
+			}});
+		pan.add(btn);
+		
+		//Status
+		lab = new JLabel("Status:");
+		lab.setBounds(415, 50, 50, 20);
+		pan.add(lab);
+		
+		if(m.isEntliehen()){
+			lab=new JLabel("Entliehen");
+			btn.setEnabled(false);
+		}
+		else{
+			lab=new JLabel("Entleihbar");
+			btn.setEnabled(true);
+		}
+		
+		lab.setBounds(470, 50, 100, 20);
+		pan.add(lab);
 		
 	}
 	
@@ -144,10 +228,117 @@ public class MedieninformationGUI extends JFrame{
 		lab = new JLabel(c.getLabel());
 		lab.setBounds(205, 125, 200, 20);
 		pan.add(lab);
+		
+		//Button
+		JButton btn = new JButton("Entleihen");
+		btn.setBounds(415, 75, 150, 20);
+		btn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				entleihe();
+				
+				setEnabled(false);
+				setVisible(false);
+				dispose();
+				
+			}});
+		pan.add(btn);
+		
+		//Status
+		lab = new JLabel("Status:");
+		lab.setBounds(415, 50, 50, 20);
+		pan.add(lab);
+		
+		if(m.isEntliehen()){
+			lab=new JLabel("Entliehen");
+			btn.setEnabled(false);
+		}
+		else{
+			lab=new JLabel("Entleihbar");
+			btn.setEnabled(true);
+		}
+		
+		lab.setBounds(470, 50, 100, 20);
+		pan.add(lab);
+		
+		
 	}
 
 	private void createADVDWindow(DVD d){
-	
+		//Titel
+		JLabel lab = new JLabel("Titel:");
+		lab.setBounds(50, 50, 150, 20);
+		pan.add(lab);
+		
+		lab = new JLabel(d.getTitel());
+		lab.setBounds(205, 50, 200, 20);
+		pan.add(lab);
+		
+		//FSK
+		lab = new JLabel("FSK:");
+		lab.setBounds(50, 75, 150, 20);
+		pan.add(lab);
+		
+		lab = new JLabel(Integer.toString(d.getFsk()));
+		lab.setBounds(205, 75, 200, 20);
+		pan.add(lab);
+		
+		//Erscheinungsahr
+		lab = new JLabel("Erscheinungsjahr:");
+		lab.setBounds(50, 100, 150, 20);
+		pan.add(lab);
+		
+		lab = new JLabel(Integer.toString(d.getJahr()));
+		lab.setBounds(205, 100, 200, 20);
+		pan.add(lab);
+		
+		//Spieldauer
+		lab = new JLabel("Spieldauer (Minuten):");
+		lab.setBounds(50, 125, 150, 20);
+		pan.add(lab);
+		
+		lab = new JLabel(Integer.toString(d.getSpieldauer()));
+		lab.setBounds(205, 125, 200, 20);
+		pan.add(lab);
+		
+		//Button
+		JButton btn = new JButton("Entleihen");
+		btn.setBounds(415, 75, 150, 20);
+		btn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				entleihe();
+				
+				setEnabled(false);
+				setVisible(false);
+				dispose();
+				
+			}});
+		pan.add(btn);
+		
+		//Status
+		lab = new JLabel("Status:");
+		lab.setBounds(415, 50, 50, 20);
+		pan.add(lab);
+		
+		if(m.isEntliehen()){
+			lab=new JLabel("Entliehen");
+			btn.setEnabled(false);
+		}
+		else{
+			lab=new JLabel("Entleihbar");
+			btn.setEnabled(true);
+		}
+		
+		lab.setBounds(470, 50, 100, 20);
+		pan.add(lab);
 	
 	}
+
+	private void entleihe(){
+			lv.addLeihe(mg, m);
+			
+		}
 }

@@ -9,7 +9,7 @@ public class Leiheverwaltung {
 		leihen = new ArrayList<Leihe>();		
 	}
 	
-	public void addLeihe(Mitglied m){
+	public void addLeihe(Mitglied mg, Medium m){
 		
 	}
 	
