@@ -1,7 +1,6 @@
-
 public class Adresse {
 
-	//Attribute
+	//Attribute der Adresse
 	private String strasse;
 	private int hausnummer;
 	private int plz;
@@ -64,7 +63,5 @@ public class Adresse {
 		System.out.println(land);
 		
 	}
-	
-	
 	
 }

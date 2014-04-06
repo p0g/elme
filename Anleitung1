@@ -1,0 +1,26 @@
+## Git in Eclipse einrichten ##
+1. Help -> Install new Software -> "Add"
+	Name: GitHub
+	Location: http://download.eclipse.org/egit/updates/
+2. "Ok" und dann beide Pakete auswählen
+3. "Next" -> Lizensbestimmung akzeptieren -> Installieren lassen -> Eclipse neustarten
+
+
+## Git-Projekt einbinden ##
+1. Package Explorer -> Rechtsklick -> Import -> Git -> Projects from Git -> Clone URI
+	URI: https://github.com/p0g/elme.git
+2. Next -> Next -> Directory auswählen (wo die Dateien dann liegen) -> Import existing projects -> Finish
+3. Projektdateien sind nun im Package Explorer und können bearbeitet werden.
+
+
+## Änderungen hochladen (commiten) ##
+1. Rechtsklick auf Datei oder Paket -> Team -> Commit
+2. Änderungen eingeben und gewünschte Dateien auswählen
+3. Commit and Push -> GitHub Name und PW eingeben (eventuell Store in Secure Place)
+4. Done, Änderungen sind online
+
+
+## Änderungen downloaden ##
+1. Rechtsklick auf Projekt -> Team -> Pull
+
+ 
