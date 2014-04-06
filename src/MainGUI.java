@@ -29,7 +29,8 @@ public class MainGUI extends JDialog{
 	// Constructor
 	public MainGUI (final Frame frame, Mitglied mitglied){
 		
-		super(frame,"Hauptmenü",true);			
+		super(frame,"Hauptmenü",true);	
+		
 		
 		JPanel pan=new JPanel();
 		pan.setLayout(null);
