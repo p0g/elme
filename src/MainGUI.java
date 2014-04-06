@@ -31,6 +31,7 @@ public class MainGUI extends JDialog{
 		
 		super(frame,"Hauptmenü",true);	
 		
+		
 		JPanel pan=new JPanel();
 		pan.setLayout(null);
 		
