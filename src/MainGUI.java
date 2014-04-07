@@ -69,7 +69,7 @@ public class MainGUI extends JDialog {
 		btn_logout.setLocation(300, 110);
 		btn_logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Login();
+				System.exit(0);
 			}
 		});
 		pan.add(btn_logout);
