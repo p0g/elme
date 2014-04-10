@@ -4,18 +4,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-
+/**
+ * Einzelne Leihe
+ * Pro Medium eine Leihe
+ */
 public class Leihe {
 
-	//Attribute
+	// Attribute
 	private int leihID;
 	private static int ANZAHL=1;
 	private Date datum;
 	private Mitglied mitglied;
 	private Medium medium;
 
-	//Konstruktor
-	
+	// Konstruktor	
 	public Leihe(Mitglied mitglied, Medium medium) {
 		this.datum = new Date(); // Ausleihdatum auf heute setzen
 		verlaenger();			 // Ausleihdatum einmal verlaengern
@@ -23,6 +25,9 @@ public class Leihe {
 		this.medium = medium;
 	}
 	
+	/**
+	 * Verlängerung des Mediums einleiten
+	 */
 	public void verlaenger(){
 		//TODO: Entsprechend dem Medium das Endleihdatum ermitteln. Im Moment einfach 14 Tage drauf
 		Calendar calendar = new GregorianCalendar();

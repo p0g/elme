@@ -6,26 +6,23 @@ import java.awt.event.WindowListener;
 
 import javax.swing.*;
 
-
+/**
+ * Fenster zum Anzeigen der Details zu einem Medium anzeigt
+ * @author pq
+ *
+ */
 public class MedieninformationGUI extends JDialog{
-	
-	/*Klasse ist noch nicht fertig. Bitte noch nichts ändern!
-	 * Danke, 
-	 * Sascha
-	 */
 	
 	private static final long serialVersionUID = 6330962125257015674L;
 	
-	//Attribute/Komponenten
+	// Attribute/Komponenten
 	private JPanel pan;
 	private Mitglied mg;
-	private Leiheverwaltung lv;
 	private Medium m;
 	
-	//Konstruktor
-	public MedieninformationGUI(Frame f, Medium m, Mitglied mg, Leiheverwaltung lv){
+	// Konstruktor
+	public MedieninformationGUI(Frame f, Medium m, Mitglied mg){
 		this.mg=mg;
-		this.lv=lv;
 		this.m=m;
 		
 		this.setSize(600, 250);

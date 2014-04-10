@@ -17,6 +17,9 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+/**
+ * Übersicht der vorhandenen Fristen des Mitglieds
+ */
 public class FristenGUI extends JDialog {
 	
 	/**
@@ -24,8 +27,7 @@ public class FristenGUI extends JDialog {
 	 * @param frame Hauptfenster
 	 * @param mitglied Mitgliedobjekt
 	 */
-	public FristenGUI(Frame frame, Mitglied mitglied) {
-		
+	public FristenGUI(Frame frame, Mitglied mitglied) {		
 	
 		JPanel panel = new JPanel();
 	
@@ -61,6 +63,9 @@ public class FristenGUI extends JDialog {
 		this.setVisible(true);		
 	}
 	
+	/**
+	 * Interne Klasse zur sortierung der Tabelle
+	 */
 	class TabelleSortieren extends JPanel {
 	    
 	    public TabelleSortieren(String[][] data, String[] colNames, final ArrayList<Leihe> list_leihe) {
@@ -87,6 +92,7 @@ public class FristenGUI extends JDialog {
 	            }
 	        };
 	         
+	        // externe Klasse um einen "Verlängerbutton" in die Tabelle einzubinden
 	        ButtonColumn buttonColumn = new ButtonColumn(table, verlaenger, 3);
 	        buttonColumn.setMnemonic(KeyEvent.VK_D);
 	        
@@ -106,10 +112,6 @@ public class FristenGUI extends JDialog {
 	            TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>();
 	            table.setRowSorter(sorter);
 	            sorter.setModel(model);
-	            // Filter zeigt nur Reihen in denen 'kau' enthalten ist
-	            // zur Aktivierung entkommentieren
-	            //sorter.setRowFilter(RowFilter.regexFilter(".*kau.*"));
 	    }
-
 	}
 }

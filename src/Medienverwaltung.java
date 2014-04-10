@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
-
+/**
+ * Verwaltung der vorhandenen Medien
+ */
 public class Medienverwaltung {
 	
 	private ArrayList<Medium> medien;
@@ -20,5 +22,4 @@ public class Medienverwaltung {
 	public ArrayList<Medium> getMedien(){
 		return medien;
 	}	
-
 }

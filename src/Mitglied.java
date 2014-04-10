@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-
+/**
+ * Klasse eines Mitglieds
+ */
 public class Mitglied {
 	
 	//Atribute
@@ -17,7 +19,14 @@ public class Mitglied {
 	
 	private ArrayList<Leihe> leihen = new ArrayList<Leihe>();
 	
-	//Konstruktor
+	/**
+	 * Konstruktor des Mitglieds
+	 * @param name Nachname
+	 * @param vorname Vorname
+	 * @param passwort Passwort TODO: Hashen
+	 * @param geburtsdatum Geburtsdatum
+	 * @param adresse Adressenobjekt
+	 */
 	public Mitglied(String name, String vorname, String passwort, String geburtsdatum, Adresse adresse) {
 		this.name = name;
 		this.vorname = vorname;
@@ -26,11 +35,14 @@ public class Mitglied {
 		this.adresse = adresse;
 		
 		mitgliedID=ANZAHL++;
+		// Benutzername anlegen für den Login
 		benutzername=vorname.substring(0,2) + name.substring(0,3) + mitgliedID;
 	}
 
-	//Methoden
-	
+	/**
+	 * Eine neue Leihe hinzufügen
+	 * @param m Medium
+	 */
 	public void addLeihe(Medium m){
 		Leihe l = new Leihe(this, m);
 		leihen.add(l);
@@ -51,14 +63,23 @@ public class Mitglied {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return Vorhandene Leihen
+	 */
 	public ArrayList<Leihe> getLeihen(){
 		return leihen;
 	}
 	
+	/**
+	 * Eine Bestimmte Leihe entfernen
+	 * @param l Leihe
+	 */
 	public void removeLeihe(Leihe l){
 		leihen.remove(l);
 	}
-	
+
+	// Diverse Getter und Setter
 	public String getName() {
 		return name;
 	}
@@ -97,6 +118,11 @@ public class Mitglied {
 		return mitgliedID;
 	}
 	
+	/**
+	 * Passwort überprüfen
+	 * @param angeblichesPasswort Zu überprüfendes Passwort
+	 * @return TRUE wenn korekt, sonst FALSE
+	 */
 	public boolean validierePasswort(String angeblichesPasswort){
 		return this.passwort.equals(angeblichesPasswort);
 		

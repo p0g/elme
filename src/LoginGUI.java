@@ -6,9 +6,14 @@ import java.awt.event.WindowListener;
 
 import javax.swing.*;
 
+/**
+ * LoginGUI die es einem Mitglied ermöglicht sich einzuloggen
+ * ACHTUNG: Logindaten wurden schon in die Textfelder eingetragen
+ * um ein ständiges Neu-Eingeben beim Entwickeln zu vermeiden.
+ */
 public class LoginGUI extends JDialog{
 
-	//Attribute
+	// Attribute
 	private Mitgliederverwaltung mv;
 	private JLabel lbl;
 	private JTextField tf1;
@@ -16,25 +21,25 @@ public class LoginGUI extends JDialog{
 	private JButton btn;
 	private boolean erfolg;
 	
-	// Eingeloggtes Mitgliedsobjekt
-	Mitglied mitglied = null;
+	// Mitgliedsobjekt das mit Mitglied belegt wird, wenn eingeloggt
+	Mitglied mitglied = null;	
 	
-	
-	//Konstruktor
-	public LoginGUI(Frame frame, Mitgliederverwaltung mv){
-		
-		super(frame,"Login",true);
-		
+	/**
+	 * Konstruktor der LoginGUI
+	 * @param frame Hauptfenster (zur Orientierung)
+	 * @param mv Mitgliederverwaltung
+	 */
+	public LoginGUI(Frame frame, Mitgliederverwaltung mv){		
+		super(frame,"Login",true);		
 		
 		//Fachlicher Teil
-		this.mv=mv;
+		this.mv = mv;
 		
 		//GUI-Teil
 		this.setSize(380, 230);
 		this.setResizable(false);
 		this.setLayout(null);
-		this.setLocation(550, 300);
-		
+		this.setLocation(550, 300);		
 		
 		JPanel pan=new JPanel();
 		pan.setSize(320, 280);
@@ -53,13 +58,15 @@ public class LoginGUI extends JDialog{
 		tf1=new JTextField();
 		tf1.setSize(120, 20);
 		tf1.setLocation(165, 50);
-		tf1.setText("MaMus1");
+		// Voreingegebene Daten für schnelleren Login bei der Entwicklung
+		tf1.setText("MaMus1"); 
 		pan.add(tf1);
 		
 		tf2=new JTextField();
 		tf2.setSize(120, 20);
 		tf2.setLocation(165, 80);
-		tf2.setText("test");
+		// Voreingegebene Daten für schnelleren Login bei der Entwicklung
+		tf2.setText("test"); 
 		pan.add(tf2);
 		
 		btn = new JButton("Einloggen");
@@ -82,42 +89,39 @@ public class LoginGUI extends JDialog{
 		this.addWindowListener(new WindowListener(){
 
 			public void windowActivated(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub				
 			}
 
 			public void windowClosed(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub				
 			}
 
 			public void windowClosing(WindowEvent arg0) {
-				System.exit(0);
-				
+				System.exit(0);			
 			}
 
 			public void windowDeactivated(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub				
 			}
 
 			public void windowDeiconified(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub				
 			}
 
 			public void windowIconified(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub				
 			}
 
 			public void windowOpened(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}});
+				// TODO Auto-generated method stub				
+			}
+		});
+		
+		// LoginGUI anzeigen
 		this.setVisible(true);
 	}
 	
+	// Logindaten verarbeiten
 	public void Login(){
 		lbl.setVisible(false);
 		String name=tf1.getText();

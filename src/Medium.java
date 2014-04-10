@@ -1,4 +1,7 @@
 
+/**
+ * Oberklasse aller Medien
+ */
 public abstract class Medium {
 
 	//Attribute
@@ -62,6 +65,4 @@ public abstract class Medium {
 	public String toString(){
 		return this.titel;
 	}
-	
-	
 }

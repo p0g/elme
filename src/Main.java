@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
-
 
 public class Main {
 
@@ -14,8 +12,7 @@ public class Main {
 		Medienverwaltung medienV = new Medienverwaltung();	
 		
 			
-		/* Testdaten die nicht in Rahmen des Projektes erfasst werden sollen */
-		
+		/* Testdaten die nicht in Rahmen des Projektes erfasst werden sollen */		
 		Adresse ad01=new Adresse("EFS", 44, 44227, "Dortmund", "DE");
 		Mitglied mg01=new Mitglied("Mustermann", "Max", "test", "27.1.82", ad01);		
 		Buch b1 = new Buch("Das erste Buch", 1999, "James Dick", "Stern Verlag", "123-456-789");
@@ -25,34 +22,30 @@ public class Main {
 		medienV.addMedium(b2);
 		medienV.addMedium(d1);				
 		mg01.addLeihe(b2);
-		mv.addMitglied(mg01);
-			
-		/* ####################################################################### */
+		mv.addMitglied(mg01);			
+		/* ####################################################################### */	
 		
 		
-		
-		/* Create new MainFrame */
+		/* Neuen Hauptframe erstellen */
 		final JFrame frame = new JFrame("Verwaltung");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 600);
         frame.setResizable(false);
-		frame.setLocation(550, 300);
+		frame.setLocation(550, 300);		
+		// ############################
 		
 		
-		// ############################ 
 		frame.setVisible(false);
 		
+		// LoginGUI starten und auf Login warten (Modular)
         LoginGUI login = new LoginGUI(frame, mv);
-        //frame.setVisible(true);
         
         if(login.isErfolg()){
-        	// Login is ok        	
-        	
+        	// Login is ok 
         	// Hole eingeloggtes Mitglied
         	Mitglied mitglied = login.getMitglied();
-        	//login.dispose(); 
         	
-        	// Login is ok, load the Mainmenu
+        	// Lade das Hauptfenster
         	MainGUI main = new MainGUI(frame, mitglied, medienV.getMedien());
         }
         // #############################

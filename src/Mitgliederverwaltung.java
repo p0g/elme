@@ -1,12 +1,16 @@
 import java.util.ArrayList;
 
-
+/**
+ * Verwaltung aller Mitglieder
+ */
 public class Mitgliederverwaltung {
 	
 	//Attribute
 	private ArrayList<Mitglied> mitglieder;
 	
-	//Konstruktor
+	/**
+	 * Konstruktor
+	 */
 	public Mitgliederverwaltung(){
 		mitglieder=new ArrayList<Mitglied>();
 	}
@@ -49,8 +53,6 @@ public class Mitgliederverwaltung {
 			}else{
 				return null;
 			}
-		}
-		
-		
+		}	
 	}
 }

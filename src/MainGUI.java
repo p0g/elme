@@ -18,11 +18,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 
+/**
+ * Hauptfenster
+ * BTW: Ansicht eines Mediums durch Doppelklick darauf ;)
+ */
 public class MainGUI extends JDialog {
 
-	// Attributs
+	// Attribute
 	private Mitgliederverwaltung mv;
-	private Leiheverwaltung lv = new Leiheverwaltung();
 
 	private JButton btn_leihen;
 	private JButton btn_logout;
@@ -31,44 +34,43 @@ public class MainGUI extends JDialog {
 
 	public static ArrayList<String> al = new ArrayList<String>();
 
-	// Constructor
+	/**
+	 * Konstruktor
+	 * @param frame Hauptframe
+	 * @param mitglied Eingeloggtes Mitglied
+	 * @param medien ArrayList aller vorhandenen Medien
+	 */
 	public MainGUI(final Frame frame, final Mitglied mitglied, ArrayList<Medium> medien) {
-
 		super(frame, "Hauptmenü", true);		
 
 		JPanel pan = new JPanel();
 		pan.setLayout(null);
 
+		// Suchfeld
 		tf_search = new JTextField();
 		tf_search.setSize(200, 20);
 		tf_search.setLocation(30, 30);
-		//tf_search.setText(" Suche");
 		pan.add(tf_search);
 		
-		btn_search = new JButton("Logout");
-		btn_search.setSize(150, 20);
-		btn_search.setLocation(300, 110);
-		btn_search.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Login();
-			}
-		});
-
+		// Leihfristenbutton
 		btn_leihen = new JButton("Leihfristen einsehen");
 		btn_leihen.setSize(150, 20);
 		btn_leihen.setLocation(300, 80);
 		btn_leihen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// FristenGUI aufrufen
 				FristenGUI fristen = new FristenGUI(frame, mitglied);
 			}
 		});
 		pan.add(btn_leihen);
 
+		// Logoutbutton
 		btn_logout = new JButton("Logout");
 		btn_logout.setSize(150, 20);
 		btn_logout.setLocation(300, 110);
 		btn_logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// System beenden
 				System.exit(0);
 			}
 		});
@@ -84,7 +86,7 @@ public class MainGUI extends JDialog {
 					Medium item = (Medium) list_medien.getModel().getElementAt(index);
 					
 					//System.out.println(item.getTitel());
-					MedieninformationGUI mig = new MedieninformationGUI(frame, item, mitglied, lv);
+					MedieninformationGUI mig = new MedieninformationGUI(frame, item, mitglied);
 				}
 			}
 		});
@@ -92,16 +94,17 @@ public class MainGUI extends JDialog {
 		list_medien.setSize(200, 400);
 		list_medien.setLocation(30, 80);
 		
+		// Aktionlistener für die Suche definieren. 
+		// Zurzeit nur exakte Volltextsuche möglich
+		// Suche startet mit <ENTER>
+		// TODO: Feinere Suche, Suchbutton
 		tf_search.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-            	
+            public void actionPerformed(ActionEvent evt) {            	
                 ListModel model = list_medien.getModel();
                 String suchtext = tf_search.getText().trim();
                 if (suchtext == null || suchtext.equals("")){
                 	list_medien.setSelectedIndex(-1);
-                	
-                    return;
-                    
+                    return;  
                 }
                 int size = model.getSize();
                 for (int i = 0; i < size; i++) {
@@ -112,14 +115,12 @@ public class MainGUI extends JDialog {
                     }
                 }
             }
-        });
+        });	
 		
-		
-		
+		// Liste der Medien ins Panel einbinden
 		pan.add(list_medien);
 
 		frame.add(pan);
 		frame.setVisible(true);
-
 	}
 }

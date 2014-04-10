@@ -29,5 +29,4 @@ public class CD extends Medium {
 	public void setLabel(String label) {
 		this.label = label;
 	}
-
 }

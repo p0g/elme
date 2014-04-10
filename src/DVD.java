@@ -30,6 +30,4 @@ public class DVD extends Medium {
 	public void setSpieldauer(int spieldauer) {
 		this.spieldauer = spieldauer;
 	}
-
-	
 }
