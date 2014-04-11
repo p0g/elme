@@ -1,10 +1,10 @@
 
 /**
- * Interface um Objekte zu speichern
- * TODO im nächsten Praktikum, hier nur einplanung
+ * Interface zur Objektspeicherung
  */
 public interface SpeicherI {
 	
-	// Speicherung der Daten
+	public void saveObjects(Mitgliederverwaltung miv, Medienverwaltung mev);
+	public void getObjects();
 	
 }
