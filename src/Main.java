@@ -7,12 +7,12 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// Globale Mitgliederverwaltung
-		Mitgliederverwaltung mv=new Mitgliederverwaltung();
+		Mitgliederverwaltung mv=Mitgliederverwaltung.getInstance();
 		// Globale Medienverwaltung (Biblithek)
-		Medienverwaltung medienV = new Medienverwaltung();	
+		Medienverwaltung medienV =Medienverwaltung.getInstance();	
 		
 			
-		/* Testdaten die nicht in Rahmen des Projektes erfasst werden sollen */		
+		/* Testdaten die nicht im Rahmen des Projektes erfasst werden sollen */		
 		Adresse ad01=new Adresse("EFS", 44, 44227, "Dortmund", "DE");
 		Mitglied mg01=new Mitglied("Mustermann", "Max", "test", "27.1.82", ad01);		
 		Buch b1 = new Buch("Das erste Buch", 1999, "James Dick", "Stern Verlag", "123-456-789");

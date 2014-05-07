@@ -6,8 +6,9 @@ import java.util.ArrayList;
 public class Medienverwaltung {
 	
 	private ArrayList<Medium> medien;
+	private static Medienverwaltung uniqueInstance;
 	
-	public Medienverwaltung(){		
+	private Medienverwaltung(){		
 		medien = new ArrayList<Medium>();		
 	}
 	
@@ -21,5 +22,13 @@ public class Medienverwaltung {
 	
 	public ArrayList<Medium> getMedien(){
 		return medien;
-	}	
+	}
+	
+	public static Medienverwaltung getInstance(){
+		if(uniqueInstance==null){
+			uniqueInstance=new Medienverwaltung();
+		}
+		return uniqueInstance;
+		
+	}
 }

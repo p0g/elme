@@ -7,11 +7,12 @@ public class Mitgliederverwaltung {
 	
 	//Attribute
 	private ArrayList<Mitglied> mitglieder;
+	private static Mitgliederverwaltung uniqueInstance;
 	
 	/**
 	 * Konstruktor
 	 */
-	public Mitgliederverwaltung(){
+	private Mitgliederverwaltung(){
 		mitglieder=new ArrayList<Mitglied>();
 	}
 	
@@ -23,6 +24,14 @@ public class Mitgliederverwaltung {
 	 */
 	public void addMitglied(Mitglied m) {
 		mitglieder.add(m);
+	}
+	
+	public static Mitgliederverwaltung getInstance(){
+		if(uniqueInstance == null){
+			uniqueInstance = new Mitgliederverwaltung();
+		}
+		return uniqueInstance;
+		
 	}
 	
 	/**
