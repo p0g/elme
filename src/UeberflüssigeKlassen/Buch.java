@@ -1,3 +1,5 @@
+package UeberflüssigeKlassen;
+
 
 public class Buch extends Medium {
 	

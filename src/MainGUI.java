@@ -40,7 +40,7 @@ public class MainGUI extends JDialog {
 	 * @param mitglied Eingeloggtes Mitglied
 	 * @param medien ArrayList aller vorhandenen Medien
 	 */
-	public MainGUI(final Frame frame, final Mitglied mitglied, ArrayList<MediumDTO> medien) {
+	public MainGUI(final Frame frame, final MitgliedDTO mitglied, ArrayList<MediumDTO> medien) {
 		super(frame, "Hauptmenü", true);		
 
 		JPanel pan = new JPanel();

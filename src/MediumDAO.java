@@ -24,9 +24,15 @@ public class MediumDAO{
 		//Ein neues Medium wird in die DB aufgenommen
 	}
 	
+	public MediumDTO read(String signatur){
+		//Nimmt das entsprechende Medium aus der DB und gibt es zurück
+		//Ein Medium wird durch seine signatur eindeutig identifiziert.
+		return null;
+	}
+	
 	public MediumDTO read(int i){
 		//Nimmt das entsprechende Medium aus der DB und gibt es zurück
-		//Evtl auch ein anderer Parameter, muss Stefan entscheiden und ggf anpassen
+		//Die Methode brauchte ich um einen Fehler wegzukriegen
 		return null;
 	}
 	

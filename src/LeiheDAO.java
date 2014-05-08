@@ -21,21 +21,29 @@ public class LeiheDAO {
 	}
 	
 	public void create(LeiheDTO m){
-		//Ein neues Medium wird in die DB aufgenommen
+		//Eine neue Leihe wird in die DB aufgenommen
 	}
 	
-	public LeiheDTO read(/*evtl hier noch Parameter*/){
-		//Ein neues Medium wird in die DB aufgenommen
+	//Die Methode mit diesem Parameter brauchte ich, um einen Fehler wegzukriegen. Vlt brauchen wir noch eine read-Methode mit einem anderem Parameter?
+	public LeiheDTO read(MediumDTO m){
+		//Nimmt die entsprechende Leihe aus der DB und gibt sie zurück
+		//Das Medium identifiziert die Leihe eindeutig
+		return null;
+	}
+	
+	public LeiheDTO read(int leihID){
+		//Nimmt die entsprechende Leihe aus der DB und gibt sie zurück
+		//Die leihID identifiziert die Leihe eindeutig
 		return null;
 	}
 	
 	public void update(LeiheDTO m){
-		//aktualisiert das entsprechende Medium in der DB
+		//aktualisiert die entsprechende Leihe in der DB
 	}
 	
 	
 	public void delete(LeiheDTO m){
-		//löscht das entsprechende Medium aus der DB
+		//löscht die entsprechende Leihe aus der DB
 	}
 
 }

@@ -17,7 +17,6 @@ public abstract class MediumDTO {
 			this.titel=titel;
 			this.jahr=jahr;
 			entliehen=false;
-			
 		}
 
 		//Methoden

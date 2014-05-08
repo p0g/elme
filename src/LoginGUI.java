@@ -22,7 +22,7 @@ public class LoginGUI extends JDialog{
 	private boolean erfolg;
 	
 	// Mitgliedsobjekt das mit Mitglied belegt wird, wenn eingeloggt
-	Mitglied mitglied = null;	
+	MitgliedDTO mitglied = null;	
 	
 	/**
 	 * Konstruktor der LoginGUI
@@ -159,7 +159,7 @@ public class LoginGUI extends JDialog{
 		return erfolg;
 	}
 	
-	private void setMitglied(Mitglied mitglied) {
+	private void setMitglied(MitgliedDTO mitglied) {
 		this.mitglied = mitglied;
 		
 	}
@@ -168,7 +168,7 @@ public class LoginGUI extends JDialog{
 	 * 
 	 * @return The Logined Mitglied
 	 */
-	public Mitglied getMitglied() {
+	public MitgliedDTO getMitglied() {
 		return this.mitglied;
 	}
 }

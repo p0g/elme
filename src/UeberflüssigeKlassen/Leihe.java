@@ -1,3 +1,7 @@
+package UeberflüssigeKlassen;
+import MediumDTO;
+import MitgliedDTO;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,11 +18,11 @@ public class Leihe {
 	private int leihID;
 	private static int ANZAHL=1;
 	private Date datum;
-	private Mitglied mitglied;
+	private MitgliedDTO mitglied;
 	private MediumDTO medium;
 
 	// Konstruktor	
-	public Leihe(Mitglied mitglied, MediumDTO medium) {
+	public Leihe(MitgliedDTO mitglied, MediumDTO medium) {
 		this.datum = new Date(); // Ausleihdatum auf heute setzen
 		verlaenger();			 // Ausleihdatum einmal verlaengern
 		this.mitglied = mitglied;
@@ -40,7 +44,7 @@ public class Leihe {
 		return datum;
 	}
 
-	public Mitglied getMitglied() {
+	public MitgliedDTO getMitglied() {
 		return mitglied;
 	}
 	

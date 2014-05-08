@@ -1,3 +1,4 @@
+package UeberflüssigeKlassen;
 
 /**
  * Oberklasse aller Medien

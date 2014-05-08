@@ -1,3 +1,5 @@
+package UeberflüssigeKlassen;
+
 public class CD extends Medium {
 
 	// Attribute

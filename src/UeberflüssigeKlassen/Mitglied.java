@@ -1,3 +1,10 @@
+package UeberflüssigeKlassen;
+import Adresse;
+import LeiheDTO;
+import MediumDAO;
+import MediumDTO;
+import MitgliedDTO;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,7 +26,7 @@ public class Mitglied {
 	//statische Variable nur für internen Gebrauch. initial 1, weil sonst die generierung der benutzernamen bei 0 beginnen würde!
 	private static int ANZAHL=1;
 	
-	private ArrayList<Leihe> leihen = new ArrayList<Leihe>();
+	private ArrayList<LeiheDTO> leihen = new ArrayList<LeiheDTO>();
 	
 	/**
 	 * Konstruktor des Mitglieds
@@ -46,7 +53,7 @@ public class Mitglied {
 	 * @param m Medium
 	 */
 	public void addLeihe(MediumDTO m){
-		Leihe l = new Leihe(this, m);
+		LeiheDTO l = new LeiheDTO(new MitgliedDTO(name, vorname, passwort, geburtsdatum, adresse), m);
 		leihen.add(l);
 		m.setEntliehen(true);
 		MediumDAO.getInstance().update(m);
@@ -57,8 +64,8 @@ public class Mitglied {
 	 * @param m Medium
 	 * @return gefundene Leihe oder Null
 	 */
-	public Leihe getLeihe(MediumDTO m){
-		for(Leihe leihe : leihen){
+	public LeiheDTO getLeihe(MediumDTO m){
+		for(LeiheDTO leihe : leihen){
 			if(leihe.getMedium().equals(m)){
 				return leihe;			
 			}			
@@ -70,7 +77,7 @@ public class Mitglied {
 	 * 
 	 * @return Vorhandene Leihen
 	 */
-	public ArrayList<Leihe> getLeihen(){
+	public ArrayList<LeiheDTO> getLeihen(){
 		return leihen;
 	}
 	
@@ -78,7 +85,7 @@ public class Mitglied {
 	 * Eine Bestimmte Leihe entfernen
 	 * @param l Leihe
 	 */
-	public void removeLeihe(Leihe l){
+	public void removeLeihe(LeiheDTO l){
 		leihen.remove(l);
 	}
 

@@ -1,3 +1,5 @@
+package UeberflüssigeKlassen;
+
 
 public class DVD extends Medium {
 	

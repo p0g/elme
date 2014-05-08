@@ -7,11 +7,11 @@ public class LeiheDTO {
 		private int leihID;
 		private static int ANZAHL=1;
 		private Date datum;
-		private Mitglied mitglied;
+		private MitgliedDTO mitglied;
 		private MediumDTO medium;
 		
 		// Konstruktor	
-		public LeiheDTO(Mitglied mitglied, MediumDTO medium) {
+		public LeiheDTO(MitgliedDTO mitglied, MediumDTO medium) {
 			this.datum = new Date(); // Ausleihdatum auf heute setzen
 			LeiheBO.getInstance().verlaenger(this);			 // Ausleihdatum einmal verlaengern
 			this.mitglied = mitglied;
@@ -27,7 +27,7 @@ public class LeiheDTO {
 			return datum;
 		}
 
-		public Mitglied getMitglied() {
+		public MitgliedDTO getMitglied() {
 			return mitglied;
 		}
 

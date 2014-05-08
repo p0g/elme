@@ -27,15 +27,15 @@ public class FristenGUI extends JDialog {
 	 * @param frame Hauptfenster
 	 * @param mitglied Mitgliedobjekt
 	 */
-	public FristenGUI(Frame frame, Mitglied mitglied) {		
+	public FristenGUI(Frame frame, MitgliedDTO mitglied) {		
 	
 		JPanel panel = new JPanel();
 	
 		String[] medium;
 		ArrayList<String[]> list_table = new ArrayList<String[]>();
-		ArrayList<Leihe> list_leihe = new ArrayList<Leihe>();
+		ArrayList<LeiheDTO> list_leihe = new ArrayList<LeiheDTO>();
 		
-		for(Leihe leihe : mitglied.getLeihen()){
+		for(LeiheDTO leihe : mitglied.getLeihen()){
 			medium = new String[4];
 			medium[0] = leihe.getMedium().getTitel();
 			medium[1] = leihe.getMedium().getClass().toString().replace("class ", "");
@@ -68,7 +68,7 @@ public class FristenGUI extends JDialog {
 	 */
 	class TabelleSortieren extends JPanel {
 	    
-	    public TabelleSortieren(String[][] data, String[] colNames, final ArrayList<Leihe> list_leihe) {
+	    public TabelleSortieren(String[][] data, String[] colNames, final ArrayList<LeiheDTO> list_leihe) {
 	        DefaultTableModel model = new DefaultTableModel(data, colNames);
 	        JTable table = new JTable(model);
 	       
@@ -79,7 +79,7 @@ public class FristenGUI extends JDialog {
 	            	JTable table = (JTable)e.getSource();
 	                int modelRow = Integer.valueOf( e.getActionCommand() );
 	                
-	                list_leihe.get(modelRow).verlaenger();
+	                LeiheBO.getInstance().verlaenger(list_leihe.get(modelRow));
 	                setEnabled(false);
 					setVisible(false);
 					dispose();

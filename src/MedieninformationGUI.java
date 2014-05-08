@@ -17,11 +17,11 @@ public class MedieninformationGUI extends JDialog{
 	
 	// Attribute/Komponenten
 	private JPanel pan;
-	private Mitglied mg;
+	private MitgliedDTO mg;
 	private MediumDTO m;
 	
 	// Konstruktor
-	public MedieninformationGUI(Frame f, MediumDTO m, Mitglied mg){
+	public MedieninformationGUI(Frame f, MediumDTO m, MitgliedDTO mg){
 		this.mg=mg;
 		this.m=m;
 		
@@ -329,6 +329,6 @@ public class MedieninformationGUI extends JDialog{
 	}
 
 	private void entleihe(){
-			mg.addLeihe(m);			
+			MitgliedBO.getInstance().addLeihe(mg, m);			
 		}
 }

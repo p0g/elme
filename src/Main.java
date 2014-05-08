@@ -14,14 +14,14 @@ public class Main {
 			
 		/* Testdaten die nicht im Rahmen des Projektes erfasst werden sollen */		
 		Adresse ad01=new Adresse("EFS", 44, 44227, "Dortmund", "DE");
-		Mitglied mg01=new Mitglied("Mustermann", "Max", "test", "27.1.82", ad01);		
+		MitgliedDTO mg01=new MitgliedDTO("Mustermann", "Max", "test", "27.1.82", ad01);		
 		BuchDTO b1 = ConcreteMedienFactory.getInstance().createBook("Das erste Buch", 1999, "James Dick", "Stern Verlag", "123-456-789");
 		BuchDTO b2 = ConcreteMedienFactory.getInstance().createBook("Das zweite Buch", 2000, "Kirk", "Buchbinder", "222-333-444");
 		DvDDTO d1 = ConcreteMedienFactory.getInstance().createDvD("Die Reise", 1980, 12, 120);		
 		medienV.addMedium(b1);
 		medienV.addMedium(b2);
 		medienV.addMedium(d1);				
-		mg01.addLeihe(b2);
+		MitgliedBO.getInstance().addLeihe(mg01, b2);
 		mv.addMitglied(mg01);			
 		/* ####################################################################### */	
 		
@@ -43,7 +43,7 @@ public class Main {
         if(login.isErfolg()){
         	// Login is ok 
         	// Hole eingeloggtes Mitglied
-        	Mitglied mitglied = login.getMitglied();
+        	MitgliedDTO mitglied = login.getMitglied();
         	
         	// Lade das Hauptfenster
         	MainGUI main = new MainGUI(frame, mitglied, medienV.getMedien());
