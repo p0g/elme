@@ -1,8 +1,8 @@
 
-public class CDBO extends MediumBO {
+public class CDBO implements MediumBO {
 
 	public CDBO() {
-		super();
+		
 	}
 
 	//Methoden

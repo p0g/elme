@@ -5,22 +5,33 @@ import java.util.ArrayList;
  */
 public class Medienverwaltung {
 	
-	private ArrayList<Medium> medien;
+	//private ArrayList<MediumDTO> medien;
 	private static Medienverwaltung uniqueInstance;
 	
 	private Medienverwaltung(){		
-		medien = new ArrayList<Medium>();		
+		//medien = new ArrayList<MediumDTO>();		
 	}
 	
-	public void addMedium(Medium m){
-		medien.add(m);
+	public void addMedium(MediumDTO m){
+		MediumDAO.getInstance().create(m);
 	}
 	
-	public Medium getMedium(int i){
-		return medien.get(i);
+	public MediumDTO getMedium(int i){
+		return MediumDAO.getInstance().read(i);
 	}
 	
-	public ArrayList<Medium> getMedien(){
+	public ArrayList<MediumDTO> getMedien(){
+		ArrayList<MediumDTO> medien=new ArrayList<MediumDTO>();
+		MediumDTO m=null;
+		int i=0;
+		while(true){
+			m=MediumDAO.getInstance().read(i);
+			if(m==null){
+				break;
+			}
+			medien.add(m);
+			i++;
+		}
 		return medien;
 	}
 	

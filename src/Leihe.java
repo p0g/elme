@@ -15,10 +15,10 @@ public class Leihe {
 	private static int ANZAHL=1;
 	private Date datum;
 	private Mitglied mitglied;
-	private Medium medium;
+	private MediumDTO medium;
 
 	// Konstruktor	
-	public Leihe(Mitglied mitglied, Medium medium) {
+	public Leihe(Mitglied mitglied, MediumDTO medium) {
 		this.datum = new Date(); // Ausleihdatum auf heute setzen
 		verlaenger();			 // Ausleihdatum einmal verlaengern
 		this.mitglied = mitglied;
@@ -44,11 +44,11 @@ public class Leihe {
 		return mitglied;
 	}
 	
-	public void setMedium(Medium m){
+	public void setMedium(MediumDTO m){
 		this.medium = m;
 	}
 	
-	public Medium getMedium(){
+	public MediumDTO getMedium(){
 		return this.medium;
 	}
 	

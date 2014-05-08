@@ -19,7 +19,7 @@ public abstract class MediumDTO {
 			entliehen=false;
 			
 		}
-		
+
 		//Methoden
 		public int getMediumID() {
 			return mediumID;
@@ -40,5 +40,10 @@ public abstract class MediumDTO {
 		public boolean isEntliehen() {
 			return entliehen;
 		}
+		
+		public void setEntliehen(boolean value){
+			this.entliehen=value;
+		}
+
 		
 }

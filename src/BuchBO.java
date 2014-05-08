@@ -1,5 +1,5 @@
 
-public class BuchBO extends MediumBO {
+public class BuchBO implements MediumBO {
 
 	public BuchBO() {
 		super();

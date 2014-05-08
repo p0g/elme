@@ -18,10 +18,10 @@ public class MedieninformationGUI extends JDialog{
 	// Attribute/Komponenten
 	private JPanel pan;
 	private Mitglied mg;
-	private Medium m;
+	private MediumDTO m;
 	
 	// Konstruktor
-	public MedieninformationGUI(Frame f, Medium m, Mitglied mg){
+	public MedieninformationGUI(Frame f, MediumDTO m, Mitglied mg){
 		this.mg=mg;
 		this.m=m;
 		
@@ -78,16 +78,16 @@ public class MedieninformationGUI extends JDialog{
 		
 		//Umständlicher IF-Scheiß mit Methoden deshalb, weil es mMn besser erweiterbar und wartbar ist als wenn man den Konstruktor überlädt
 		
-		if(m instanceof CD){
-			createACDWindow((CD) m);
+		if(m instanceof CDDTO){
+			createACDWindow((CDDTO) m);
 		}
 		else{
-			if(m instanceof DVD){
-				createADVDWindow((DVD) m);
+			if(m instanceof DvDDTO){
+				createADVDWindow((DvDDTO) m);
 			}
 			else{
-				if(m instanceof Buch){
-					createABookWindow((Buch) m);
+				if(m instanceof BuchDTO){
+					createABookWindow((BuchDTO) m);
 				}
 				else{
 					JLabel lab = new JLabel("Das Medium wurde nicht erkannt!");
@@ -103,7 +103,7 @@ public class MedieninformationGUI extends JDialog{
 	
 	//Methoden
 
-	private void createABookWindow(Buch b){
+	private void createABookWindow(BuchDTO b){
 
 		//Titel
 		JLabel lab = new JLabel("Titel:");
@@ -185,7 +185,7 @@ public class MedieninformationGUI extends JDialog{
 		
 	}
 	
-	private void createACDWindow(CD c){
+	private void createACDWindow(CDDTO c){
 		//Titel
 		JLabel lab = new JLabel("Titel:");
 		lab.setBounds(50, 50, 150, 20);
@@ -257,7 +257,7 @@ public class MedieninformationGUI extends JDialog{
 		
 	}
 
-	private void createADVDWindow(DVD d){
+	private void createADVDWindow(DvDDTO d){
 		//Titel
 		JLabel lab = new JLabel("Titel:");
 		lab.setBounds(50, 50, 150, 20);

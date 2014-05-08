@@ -15,9 +15,9 @@ public class Main {
 		/* Testdaten die nicht im Rahmen des Projektes erfasst werden sollen */		
 		Adresse ad01=new Adresse("EFS", 44, 44227, "Dortmund", "DE");
 		Mitglied mg01=new Mitglied("Mustermann", "Max", "test", "27.1.82", ad01);		
-		Buch b1 = new Buch("Das erste Buch", 1999, "James Dick", "Stern Verlag", "123-456-789");
-		Buch b2 = new Buch("Das zweite Buch", 2000, "Kirk", "Buchbinder", "222-333-444");
-		DVD d1 = new DVD("Die Reise", 1980, 12, 120);		
+		BuchDTO b1 = ConcreteMedienFactory.getInstance().createBook("Das erste Buch", 1999, "James Dick", "Stern Verlag", "123-456-789");
+		BuchDTO b2 = ConcreteMedienFactory.getInstance().createBook("Das zweite Buch", 2000, "Kirk", "Buchbinder", "222-333-444");
+		DvDDTO d1 = ConcreteMedienFactory.getInstance().createDvD("Die Reise", 1980, 12, 120);		
 		medienV.addMedium(b1);
 		medienV.addMedium(b2);
 		medienV.addMedium(d1);				

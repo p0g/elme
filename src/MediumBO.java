@@ -1,11 +1,8 @@
 /*
 *Fachlogik zu Medien
 */
-public abstract class MediumBO {
+public interface MediumBO {
 
-	public MediumBO(){
-		
-	}
 	
 	//Methoden
 	

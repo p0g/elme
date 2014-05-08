@@ -40,7 +40,7 @@ public class MainGUI extends JDialog {
 	 * @param mitglied Eingeloggtes Mitglied
 	 * @param medien ArrayList aller vorhandenen Medien
 	 */
-	public MainGUI(final Frame frame, final Mitglied mitglied, ArrayList<Medium> medien) {
+	public MainGUI(final Frame frame, final Mitglied mitglied, ArrayList<MediumDTO> medien) {
 		super(frame, "Hauptmenü", true);		
 
 		JPanel pan = new JPanel();
@@ -83,7 +83,7 @@ public class MainGUI extends JDialog {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {
 					int index = list_medien.locationToIndex(e.getPoint());
-					Medium item = (Medium) list_medien.getModel().getElementAt(index);
+					MediumDTO item = (MediumDTO) list_medien.getModel().getElementAt(index);
 					
 					//System.out.println(item.getTitel());
 					MedieninformationGUI mig = new MedieninformationGUI(frame, item, mitglied);

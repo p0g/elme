@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.JLabel;
+
 /**
  * Klasse eines Mitglieds
  */
@@ -43,10 +45,11 @@ public class Mitglied {
 	 * Eine neue Leihe hinzufügen
 	 * @param m Medium
 	 */
-	public void addLeihe(Medium m){
+	public void addLeihe(MediumDTO m){
 		Leihe l = new Leihe(this, m);
 		leihen.add(l);
 		m.setEntliehen(true);
+		MediumDAO.getInstance().update(m);
 	}
 	
 	/**
@@ -54,7 +57,7 @@ public class Mitglied {
 	 * @param m Medium
 	 * @return gefundene Leihe oder Null
 	 */
-	public Leihe getLeihe(Medium m){
+	public Leihe getLeihe(MediumDTO m){
 		for(Leihe leihe : leihen){
 			if(leihe.getMedium().equals(m)){
 				return leihe;			

@@ -1,9 +1,9 @@
 
-public class DvDBO extends MediumBO {
+public class DvDBO implements MediumBO {
 	
 	//Konstruktor
 	public DvDBO(){
-		super();
+		
 	}
 
 	//Methoden
