@@ -1,3 +1,4 @@
+package GUIs;
 import java.awt.Component;
 import java.awt.Frame;
 import java.awt.List;
@@ -7,26 +8,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.ListModel;
+import javax.swing.*;
+
+import business_objects.MitgliedBO;
+import data_transfer_objects.*;
 
 /**
- * Hauptfenster
- * BTW: Ansicht eines Mediums durch Doppelklick darauf ;)
+ * Hauptfenster BTW: Ansicht eines Mediums durch Doppelklick darauf ;)
  */
 public class MainGUI extends JDialog {
 
 	// Attribute
-	private Mitgliederverwaltung mv;
-
 	private JButton btn_leihen;
 	private JButton btn_logout;
 	private JButton btn_search;
@@ -36,12 +28,13 @@ public class MainGUI extends JDialog {
 
 	/**
 	 * Konstruktor
+	 * 
 	 * @param frame Hauptframe
 	 * @param mitglied Eingeloggtes Mitglied
 	 * @param medien ArrayList aller vorhandenen Medien
 	 */
 	public MainGUI(final Frame frame, final MitgliedDTO mitglied, ArrayList<MediumDTO> medien) {
-		super(frame, "Hauptmenü", true);		
+		super(frame, "Hauptmenü", true);
 
 		JPanel pan = new JPanel();
 		pan.setLayout(null);
@@ -51,7 +44,7 @@ public class MainGUI extends JDialog {
 		tf_search.setSize(200, 20);
 		tf_search.setLocation(30, 30);
 		pan.add(tf_search);
-		
+
 		// Leihfristenbutton
 		btn_leihen = new JButton("Leihfristen einsehen");
 		btn_leihen.setSize(150, 20);
@@ -71,11 +64,12 @@ public class MainGUI extends JDialog {
 		btn_logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// System beenden
-				System.exit(0);
+				MitgliedBO.getInstance().deregister(mitglied);
+				
 			}
 		});
 		pan.add(btn_logout);
-		
+
 		// JList mit Einträgen wird erstellt
 		final JList list_medien = new JList(medien.toArray());
 
@@ -84,39 +78,39 @@ public class MainGUI extends JDialog {
 				if (e.getClickCount() == 2) {
 					int index = list_medien.locationToIndex(e.getPoint());
 					MediumDTO item = (MediumDTO) list_medien.getModel().getElementAt(index);
-					
-					//System.out.println(item.getTitel());
+
+					// System.out.println(item.getTitel());
 					MedieninformationGUI mig = new MedieninformationGUI(frame, item, mitglied);
 				}
 			}
 		});
-		
+
 		list_medien.setSize(200, 400);
 		list_medien.setLocation(30, 80);
-		
-		// Aktionlistener für die Suche definieren. 
+
+		// Aktionlistener für die Suche definieren.
 		// Zurzeit nur exakte Volltextsuche möglich
 		// Suche startet mit <ENTER>
 		// TODO: Feinere Suche, Suchbutton
 		tf_search.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {            	
-                ListModel model = list_medien.getModel();
-                String suchtext = tf_search.getText().trim();
-                if (suchtext == null || suchtext.equals("")){
-                	list_medien.setSelectedIndex(-1);
-                    return;  
-                }
-                int size = model.getSize();
-                for (int i = 0; i < size; i++) {
-                    Object o = model.getElementAt(i);
-                    if (o.toString().equals(suchtext)) {
-                    	list_medien.setSelectedIndex(i);
-                        return;
-                    }
-                }
-            }
-        });	
-		
+			public void actionPerformed(ActionEvent evt) {
+				ListModel model = list_medien.getModel();
+				String suchtext = tf_search.getText().trim();
+				if (suchtext == null || suchtext.equals("")) {
+					list_medien.setSelectedIndex(-1);
+					return;
+				}
+				int size = model.getSize();
+				for (int i = 0; i < size; i++) {
+					Object o = model.getElementAt(i);
+					if (o.toString().equals(suchtext)) {
+						list_medien.setSelectedIndex(i);
+						return;
+					}
+				}
+			}
+		});
+
 		// Liste der Medien ins Panel einbinden
 		pan.add(list_medien);
 

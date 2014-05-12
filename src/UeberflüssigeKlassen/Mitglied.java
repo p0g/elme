@@ -1,14 +1,14 @@
 package UeberflüssigeKlassen;
-import Adresse;
-import LeiheDTO;
-import MediumDAO;
-import MediumDTO;
-import MitgliedDTO;
-
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JLabel;
+
+import bla.Adresse;
+import data_access_objects.MediumDAO;
+import data_transfer_objects.LeiheDTO;
+import data_transfer_objects.MediumDTO;
+import data_transfer_objects.MitgliedDTO;
 
 /**
  * Klasse eines Mitglieds

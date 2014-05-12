@@ -1,3 +1,4 @@
+package business_objects;
 
 public class BuchBO implements MediumBO {
 
@@ -5,6 +6,6 @@ public class BuchBO implements MediumBO {
 		super();
 	}
 
-	//Methoden
-	//siehe Oberklasse
+	// Methoden
+	// siehe Oberklasse
 }

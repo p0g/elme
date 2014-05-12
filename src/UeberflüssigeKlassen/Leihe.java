@@ -1,12 +1,12 @@
 package UeberflüssigeKlassen;
-import MediumDTO;
-import MitgliedDTO;
-
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import data_transfer_objects.MediumDTO;
+import data_transfer_objects.MitgliedDTO;
 
 /**
  * Einzelne Leihe

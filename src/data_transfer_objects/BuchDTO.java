@@ -1,22 +1,23 @@
+package data_transfer_objects;
 
 public class BuchDTO extends MediumDTO {
 
-	//Attribute
+	// Attribute
 	private String verfasser;
 	private String verlag;
 	private String isbn;
-	
-	//Konstruktor
+
+	// Konstruktor
 	public BuchDTO(String titel, int jahr, String verfasser, String verlag, String isbn) {
 		super(titel, jahr);
-		signatur="B-" + mediumID;
-		
-		this.verfasser=verfasser;
-		this.verlag=verlag;
-		this.isbn=isbn;
+		signatur = "B-" + mediumID;
+
+		this.verfasser = verfasser;
+		this.verlag = verlag;
+		this.isbn = isbn;
 	}
-	
-	//Methoden
+
+	// Methoden
 	public String getVerfasser() {
 		return verfasser;
 	}
@@ -28,6 +29,5 @@ public class BuchDTO extends MediumDTO {
 	public String getIsbn() {
 		return isbn;
 	}
-	
 
 }

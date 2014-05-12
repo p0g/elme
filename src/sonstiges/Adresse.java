@@ -1,13 +1,14 @@
+package sonstiges;
 public class Adresse {
 
-	//Attribute der Adresse
+	// Attribute der Adresse
 	private String strasse;
 	private int hausnummer;
 	private int plz;
 	private String ort;
 	private String land;
 
-	//Konstruktor
+	// Konstruktor
 	public Adresse(String strasse, int hausnummer, int plz, String ort, String land) {
 		this.strasse = strasse;
 		this.hausnummer = hausnummer;
@@ -16,7 +17,7 @@ public class Adresse {
 		this.land = land;
 	}
 
-	//Methoden
+	// Methoden
 	public String getStrasse() {
 		return strasse;
 	}
@@ -56,12 +57,10 @@ public class Adresse {
 	public void setLand(String land) {
 		this.land = land;
 	}
-	
-	public void druckeDaten(){
+
+	public void druckeDaten() {
 		System.out.println(strasse + hausnummer);
 		System.out.println(plz + ort);
 		System.out.println(land);
-		
 	}
-	
 }

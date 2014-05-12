@@ -1,11 +1,12 @@
+package data_transfer_objects;
 
-public class CDDTO extends MediumDTO{
-	
+public class CDDTO extends MediumDTO {
+
 	// Attribute
 	private String interpret;
 	private String label;
 
-	//Konstruktor
+	// Konstruktor
 	public CDDTO(String titel, int jahr, String interpret, String label) {
 		super(titel, jahr);
 		signatur = "CD-" + mediumID;
@@ -13,9 +14,8 @@ public class CDDTO extends MediumDTO{
 		this.interpret = interpret;
 		this.label = label;
 	}
-	
-	
-	//Methoden
+
+	// Methoden
 	public String getInterpret() {
 		return interpret;
 	}
@@ -23,8 +23,5 @@ public class CDDTO extends MediumDTO{
 	public String getLabel() {
 		return label;
 	}
-	
-
-	
 
 }

@@ -1,20 +1,21 @@
+package data_transfer_objects;
 
 public class DvDDTO extends MediumDTO {
 
-	//Attribute
-	private int fsk; //vlt eine enumeration erstellen?
+	// Attribute
+	private int fsk; // vlt eine enumeration erstellen?
 	private int spieldauer;
-	
-	//Konstruktor
+
+	// Konstruktor
 	public DvDDTO(String titel, int jahr, int fsk, int spieldauer) {
 		super(titel, jahr);
-		signatur="DVD-" + mediumID;
-		
-		this.fsk=fsk;
-		this.spieldauer=spieldauer;
+		signatur = "DVD-" + mediumID;
+
+		this.fsk = fsk;
+		this.spieldauer = spieldauer;
 	}
-	
-	//Methoden
+
+	// Methoden
 	public int getFsk() {
 		return fsk;
 	}
@@ -22,7 +23,5 @@ public class DvDDTO extends MediumDTO {
 	public int getSpieldauer() {
 		return spieldauer;
 	}
-	
-	
 
 }
