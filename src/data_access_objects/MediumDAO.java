@@ -53,10 +53,7 @@ public class MediumDAO {
 			if(goon){
 				sql_medien 	= "INSERT INTO medien (medium_typ_id, signatur, titel, jahr) "
 							+ "VALUES ('"+ typ +"', '"+ m.getTitel() +"', '"+ m.getSignatur() +"', '"+ m.getJahr() +"' );";
-				
-				//System.out.println(sql_medien);
-				//goon = false;
-				
+								
 				ResultSet rs = db.insert(sql_medien);
 				rs.next();
 				medien_id = rs.getInt(1);
