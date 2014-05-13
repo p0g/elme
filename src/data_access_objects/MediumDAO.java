@@ -1,6 +1,11 @@
 package data_access_objects;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import sonstiges.DBMySQL;
+import data_transfer_objects.BuchDTO;
+import data_transfer_objects.CDDTO;
+import data_transfer_objects.DvDDTO;
 import data_transfer_objects.MediumDTO;
 
 /*
@@ -25,7 +30,70 @@ public class MediumDAO {
 	}
 
 	public void create(MediumDTO m) {
-		// Ein neues Medium wird in die DB aufgenommen
+		
+		try {
+			DBMySQL db = new DBMySQL();
+				
+			String sql_medien, sql_typ = "";
+			Boolean goon = true;
+			int typ = 0, medien_id = 0;
+			
+			// Medium untersuchen und speichern
+			if(m instanceof BuchDTO){
+				typ = 1;
+			}else if(m instanceof CDDTO){
+				typ = 3;
+			}else if(m instanceof DvDDTO){
+				typ = 2;
+			}else{
+				goon = false;
+				System.out.println("Fehler: Unbekanntes Medium");
+			}
+			
+			if(goon){
+				sql_medien 	= "INSERT INTO medien (medium_typ_id, signatur, titel, jahr) "
+							+ "VALUES ('"+ typ +"', '"+ m.getTitel() +"', '"+ m.getSignatur() +"', '"+ m.getJahr() +"' );";
+				
+				//System.out.println(sql_medien);
+				//goon = false;
+				
+				ResultSet rs = db.insert(sql_medien);
+				rs.next();
+				medien_id = rs.getInt(1);
+			}
+			
+			// Prüfen von welchem Typ das Medium ist
+			// und entsprechende SQL-Tablle anwählen
+			if(m instanceof BuchDTO){
+				BuchDTO b = (BuchDTO)m;
+				sql_typ = "INSERT INTO buecher (mediumid, verfasser, verlag, isbn) "
+						+ "VALUES ('"+ medien_id  +"', '"+ b.getVerfasser() +"', '"+ b.getVerlag() +"', '"+ b.getIsbn()  +"');";
+			}else if(m instanceof CDDTO){
+				CDDTO c = (CDDTO)m;
+				sql_typ = "INSERT INTO cds (mediumid, interpret, label) "
+						+ "VALUES ('"+ medien_id  +"', '"+ c.getInterpret() +"', '"+ c.getLabel() +"');";
+			}else if(m instanceof DvDDTO){
+				DvDDTO d = (DvDDTO)m;
+				sql_typ = "INSERT INTO dvds (mediumid, fsk, spieldauer) "
+						+ "VALUES ('"+ medien_id  +"', '"+ d.getFsk() +"', '"+ d.getSpieldauer() +"');";
+			}else{
+				goon = false;
+				System.out.println("Fehler: Unbekanntes Medium");
+			}
+						
+			if(goon){
+				db.insert(sql_typ);
+			}
+			
+			
+			
+			db.disconnect();
+		
+		} catch (Exception e) {
+			System.out.println("Fehler!");
+			e.printStackTrace();
+			
+		}
 	}
 
 	public MediumDTO read(String signatur) {
