@@ -33,9 +33,6 @@ public class Main {
 		//MitgliedDAO.getInstance().create(mg01);
 		/*
 		 * ######################################################################
-		 * #
-		 * 
-		 * 
 		 */
 
 		/* Neuen Hauptframe erstellen */
