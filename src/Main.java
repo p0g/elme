@@ -16,8 +16,8 @@ public class Main {
 
 		/* Testdaten die nicht im Rahmen des Projektes erfasst werden sollen */
 		
-		Adresse ad01 = new Adresse("EFS", 44, 44227, "Dortmund", "DE");
-		MitgliedDAO.getInstance().create("Meier", "Peter", "peme", "peme1", "2000-04-12", ad01);
+		//Adresse ad01 = new Adresse("EFS", 44, 44227, "Dortmund", "DE");
+		//MitgliedDAO.getInstance().create("Meier", "Peter", "peme", "peme1", "2000-04-12", ad01);
 		
 		
 		BuchDTO b1 = ConcreteMedienFactory.getInstance().createBook("Das erste Buch", 1999, "James Dick", "Stern Verlag", "123-456-789");
