@@ -64,7 +64,7 @@ public class StatistikGUI extends JDialog implements Observer{
 		setVisible(true);
 	}
 
-	@Override
+	
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		

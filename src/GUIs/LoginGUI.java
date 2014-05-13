@@ -8,7 +8,6 @@ import java.awt.event.WindowListener;
 import javax.swing.*;
 
 import sonstiges.MitgliedNichtExistentException;
-import UeberflŸssigeKlassen.Mitgliederverwaltung;
 import business_objects.MitgliedBO;
 import data_transfer_objects.MitgliedDTO;
 
@@ -62,14 +61,14 @@ public class LoginGUI extends JDialog {
 		tf1.setSize(120, 20);
 		tf1.setLocation(165, 50);
 		// Voreingegebene Daten für schnelleren Login bei der Entwicklung
-		tf1.setText("MaMus1");
+		tf1.setText("mamu");
 		pan.add(tf1);
 
 		tf2 = new JTextField();
 		tf2.setSize(120, 20);
 		tf2.setLocation(165, 80);
 		// Voreingegebene Daten für schnelleren Login bei der Entwicklung
-		tf2.setText("test");
+		tf2.setText("mamu1");
 		pan.add(tf2);
 
 		btn = new JButton("Einloggen");

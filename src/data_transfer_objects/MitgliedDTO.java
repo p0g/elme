@@ -33,16 +33,19 @@ public class MitgliedDTO {
 	 * @param adresse
 	 *            Adressenobjekt
 	 */
-	public MitgliedDTO(String name, String vorname, String passwort, String geburtsdatum, Adresse adresse) {
+	public MitgliedDTO(int id, String name, String vorname, String benutzername, String passwort, String geburtsdatum, Adresse adresse) {
 		this.name = name;
 		this.vorname = vorname;
 		this.passwort = passwort;
 		this.geburtsdatum = geburtsdatum;
 		this.adresse = adresse;
+		
+		this.mitgliedID = id;
+		this.benutzername = benutzername;
 
-		mitgliedID = ANZAHL++;
+		//mitgliedID = ANZAHL++;
 		// Benutzername anlegen für den Login
-		benutzername = vorname.substring(0, 2) + name.substring(0, 3) + mitgliedID;
+		//benutzername = vorname.substring(0, 2) + name.substring(0, 2) + mitgliedID;
 	}
 
 	// Methoden
