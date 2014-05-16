@@ -132,7 +132,7 @@ public class LoginGUI extends JDialog {
 		try {
 			mitglied = MitgliedBO.getInstance().validiere(name, pw);
 		} catch (MitgliedNichtExistentException e) {
-			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(this, "Dieses Mitglied existiert nicht.");
 		}
 
 		if (mitglied == null) {

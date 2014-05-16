@@ -10,5 +10,5 @@ public interface MedienFactoryI {
 
 	public abstract CDDTO createCD(String titel, int jahr, String interpret, String label);
 
-	public abstract DvDDTO createDvD(String titel, int jahr, int fsk, int spieldauer);
+	public abstract DvDDTO createDVD(String titel, int jahr, int fsk, int spieldauer);
 }
