@@ -2,6 +2,7 @@ package data_access_objects;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import business_objects.BuchBO;
 import sonstiges.DBMySQL;
 import data_transfer_objects.BuchDTO;
 import data_transfer_objects.CDDTO;
@@ -106,26 +107,90 @@ public class MediumDAO {
 
 	public void update(MediumDTO m) {
 		// aktualisiert das entsprechende Medium in der DB
+		// ATM NUR DEN ENTLIEHENSTATUS
+		try {
+			DBMySQL db = new DBMySQL();
+			String sql = "UPDATE medien SET entliehen = 1 WHERE mediumid = '" + m.getMediumID() + "';";			
+			db.exec(sql);			
+			db.disconnect();			
+		} catch (Exception e) {
+			System.out.println("MySQL-Fehler beim Aender des ENTLIEHEN-Status: "); e.printStackTrace();
+		}
+		
 	}
 
 	public void delete(MediumDTO m) {
-		// löscht das entsprechende Medium aus der DB
+		
+		int id = m.getMediumID();
+		
+		String delete_sql = "";
+		boolean goon = true;
+
+		if(m instanceof BuchDTO){
+			delete_sql = "DELETE FROM buecher WHERE mediumid = '" + id + "';";
+		}else if(m instanceof CDDTO){
+			delete_sql = "DELETE FROM cds WHERE mediumid = '" + id + "';";
+		}else if(m instanceof DvDDTO){
+			delete_sql = "DELETE FROM dvds WHERE mediumid = '" + id + "';";
+		}else{
+			goon = false;
+			System.out.println("Fehler: Unbekanntes Medium");
+		}
+		
+		if(goon){
+			try {
+				DBMySQL db = new DBMySQL();
+				String sql = "DELETE FROM medien WHERE mediumid = '" + id + "';";			
+				db.exec(sql);		
+				db.exec(delete_sql);	
+				db.disconnect();			
+			} catch (Exception e) {
+				System.out.println("MySQL-Fehler beim Löschen: "); e.printStackTrace();
+			}
+		}
 	}
 	
-	// TODO: 
 	public ArrayList<MediumDTO> getMedien() {
+		// Holt alle Medien aus der DB und schmeisst sie in eine ArrayList
+		// Erstmal für jeden Medium-Typ selbst (UNION funzt nicht)		
+		
 		ArrayList<MediumDTO> medien = new ArrayList<MediumDTO>();
-		MediumDTO m = null;
-		int i = 0;
-		while (true) {
-			m = read(i);
-			if (m == null) {
-				break;
+		try{
+			DBMySQL db = new DBMySQL();
+			
+			// Hole Buecher
+			String sql = "SELECT * FROM medien m JOIN buecher b ON m.mediumid = b.mediumid";			
+			ResultSet rs = db.exec(sql);	
+			BuchDTO b = null;
+			while(rs.next()){
+				b = new BuchDTO(rs.getString("titel"), rs.getInt("jahr"), rs.getString("verfasser"), rs.getString("verlag"), rs.getString("isbn"));
+				medien.add(b);
 			}
-			medien.add(m);
-			i++;
+
+			// Hole DvDs
+			sql = "SELECT * FROM medien m JOIN dvds d ON m.mediumid = d.mediumid";			
+			rs = db.exec(sql);	
+			DvDDTO d = null;
+			while(rs.next()){
+				d = new DvDDTO(rs.getString("titel"), rs.getInt("jahr"), rs.getInt("fsk"), rs.getInt("spieldauer"));
+				medien.add(d);
+			}
+			
+			// Hole CDs
+			sql = "SELECT * FROM medien m JOIN cds c ON m.mediumid = c.mediumid";			
+			rs = db.exec(sql);	
+			CDDTO c = null;
+			while(rs.next()){
+				c = new CDDTO(rs.getString("titel"), rs.getInt("jahr"), rs.getString("interpret"), rs.getString("label"));
+				medien.add(c);
+			}		
+
+			db.disconnect();			
+		} catch (Exception e) {
+			System.out.println("Fehler beim holen der ArrayList aller Medien!");
+			e.printStackTrace();
 		}
-		return medien;
+		return medien;		
 	}
 
 	// Warum ist diese Klasse nicht abstrakt, wie die anderen Mediumklassen
