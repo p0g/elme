@@ -7,10 +7,10 @@ import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public class StatistikGUI extends JDialog implements Observer{
+public class StatistikGUI extends JFrame implements Observer{
 
-	public StatistikGUI(JFrame pFrame) {
-		super(pFrame, "Login Statistik");
+	public StatistikGUI() {
+		super("Login Statistik");
 		setSize(300, 200);
 		setResizable(false);
 		setLayout(null);
@@ -31,36 +31,7 @@ public class StatistikGUI extends JDialog implements Observer{
 		lPanel.add(lLabel2);
 
 		add(lPanel);
-		addWindowListener(new WindowListener() {
-
-			public void windowActivated(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowClosed(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowClosing(WindowEvent arg0) {
-				System.exit(0);
-			}
-
-			public void windowDeactivated(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowDeiconified(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowIconified(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowOpened(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-		});
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 

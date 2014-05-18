@@ -26,7 +26,7 @@ import business_objects.LeiheBO;
 /**
  * Übersicht der vorhandenen Fristen des Mitglieds
  */
-public class FristenGUI extends JDialog {
+public class FristenGUI extends JFrame {
 
 	/**
 	 * Zeigt vorhandene Leihen/Medien des Users an
@@ -36,7 +36,7 @@ public class FristenGUI extends JDialog {
 	 * @param mitglied
 	 *            Mitgliedobjekt
 	 */
-	public FristenGUI(Frame frame, MitgliedDTO mitglied) {
+	public FristenGUI(MitgliedDTO mitglied) {
 
 		JPanel panel = new JPanel();
 
@@ -64,10 +64,9 @@ public class FristenGUI extends JDialog {
 		panel.add(new TabelleSortieren(data, colNames, list_leihe));
 
 		this.add(panel);
-		this.setModal(true);
 		this.setSize(500, 500);
 		this.pack();
-		this.setLocationRelativeTo(frame);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
 

@@ -16,7 +16,7 @@ import data_transfer_objects.*;
 /**
  * Hauptfenster BTW: Ansicht eines Mediums durch Doppelklick darauf ;)
  */
-public class MainGUI extends JDialog {
+public class MainGUI extends JFrame {
 
 	// Attribute
 	private JButton btn_leihen;
@@ -33,9 +33,12 @@ public class MainGUI extends JDialog {
 	 * @param mitglied Eingeloggtes Mitglied
 	 * @param medien ArrayList aller vorhandenen Medien
 	 */
-	public MainGUI(final Frame frame, final MitgliedDTO mitglied, ArrayList<MediumDTO> medien) {
-		super(frame, "Hauptmenü", true);
-
+	public MainGUI(final MitgliedDTO mitglied, ArrayList<MediumDTO> medien) {
+		super("HauptmenŸ");
+		setSize(500, 550);
+		setLocation(400, 10);
+		
+		
 		JPanel pan = new JPanel();
 		pan.setLayout(null);
 
@@ -52,7 +55,7 @@ public class MainGUI extends JDialog {
 		btn_leihen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// FristenGUI aufrufen
-				FristenGUI fristen = new FristenGUI(frame, mitglied);
+				FristenGUI fristen = new FristenGUI(mitglied);
 			}
 		});
 		pan.add(btn_leihen);
@@ -70,7 +73,7 @@ public class MainGUI extends JDialog {
 		});
 		pan.add(btn_logout);
 
-		// JList mit Einträgen wird erstellt
+		// JList mit EintrŠgen wird erstellt
 		final JList list_medien = new JList(medien.toArray());
 
 		list_medien.addMouseListener(new MouseAdapter() {
@@ -80,7 +83,7 @@ public class MainGUI extends JDialog {
 					MediumDTO item = (MediumDTO) list_medien.getModel().getElementAt(index);
 
 					// System.out.println(item.getTitel());
-					MedieninformationGUI mig = new MedieninformationGUI(frame, item, mitglied);
+					MedieninformationGUI mig = new MedieninformationGUI(item, mitglied);
 				}
 			}
 		});
@@ -88,8 +91,8 @@ public class MainGUI extends JDialog {
 		list_medien.setSize(200, 400);
 		list_medien.setLocation(30, 80);
 
-		// Aktionlistener für die Suche definieren.
-		// Zurzeit nur exakte Volltextsuche möglich
+		// Aktionlistener fŸr die Suche definieren.
+		// Zurzeit nur exakte Volltextsuche mšglich
 		// Suche startet mit <ENTER>
 		// TODO: Feinere Suche, Suchbutton
 		tf_search.addActionListener(new ActionListener() {
@@ -114,7 +117,7 @@ public class MainGUI extends JDialog {
 		// Liste der Medien ins Panel einbinden
 		pan.add(list_medien);
 
-		frame.add(pan);
-		frame.setVisible(true);
+		add(pan);
+		setVisible(true);
 	}
 }

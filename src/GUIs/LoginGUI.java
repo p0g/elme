@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import sonstiges.MitgliedNichtExistentException;
 import business_objects.MitgliedBO;
+import data_access_objects.MediumDAO;
 import data_transfer_objects.MitgliedDTO;
 
 /**
@@ -16,7 +17,7 @@ import data_transfer_objects.MitgliedDTO;
  * Logindaten wurden schon in die Textfelder eingetragen um ein ständiges
  * Neu-Eingeben beim Entwickeln zu vermeiden.
  */
-public class LoginGUI extends JDialog {
+public class LoginGUI extends JFrame {
 
 	// Attribute
 	private JLabel lbl;
@@ -31,17 +32,14 @@ public class LoginGUI extends JDialog {
 	/**
 	 * Konstruktor der LoginGUI
 	 * 
-	 * @param frame Hauptfenster (zur Orientierung)
 	 * @param mv Mitgliederverwaltung
 	 */
-	public LoginGUI(Frame frame) {
-		super(frame, "Login");
-
-		// GUI-Teil
-		this.setSize(380, 230);
-		this.setResizable(false);
-		this.setLayout(null);
-		this.setLocation(550, 300);
+	public LoginGUI() {
+		super("Login");
+		setSize(300, 200);
+		setResizable(false);
+		setLayout(null);
+		setLocation(10, 240);
 
 		JPanel pan = new JPanel();
 		pan.setSize(320, 280);
@@ -60,14 +58,14 @@ public class LoginGUI extends JDialog {
 		tf1 = new JTextField();
 		tf1.setSize(120, 20);
 		tf1.setLocation(165, 50);
-		// Voreingegebene Daten für schnelleren Login bei der Entwicklung
+		// Voreingegebene Daten fŸr schnelleren Login bei der Entwicklung
 		tf1.setText("mamu");
 		pan.add(tf1);
 
 		tf2 = new JTextField();
 		tf2.setSize(120, 20);
 		tf2.setLocation(165, 80);
-		// Voreingegebene Daten für schnelleren Login bei der Entwicklung
+		// Voreingegebene Daten fŸr schnelleren Login bei der Entwicklung
 		tf2.setText("mamu1");
 		pan.add(tf2);
 
@@ -88,36 +86,7 @@ public class LoginGUI extends JDialog {
 		lbl.setVisible(false);
 
 		this.add(pan);
-		this.addWindowListener(new WindowListener() {
-
-			public void windowActivated(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowClosed(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowClosing(WindowEvent arg0) {
-				System.exit(0);
-			}
-
-			public void windowDeactivated(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowDeiconified(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowIconified(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			public void windowOpened(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-		});
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		// LoginGUI anzeigen
 		this.setVisible(true);
@@ -144,11 +113,7 @@ public class LoginGUI extends JDialog {
 		} else {
 			setMitglied(mitglied);
 			erfolg = true;
-			this.setVisible(false);
-			// dispose();
-			// tf1.setText("Herzlichen");
-			// tf2.setText("GlŸckwunsch!");
-
+			MainGUI lMainGUI = new MainGUI(mitglied, MediumDAO.getInstance().getMedien());
 		}
 	}
 

@@ -20,7 +20,7 @@ import business_objects.MitgliedBO;
  * @author pq
  * 
  */
-public class MedieninformationGUI extends JDialog {
+public class MedieninformationGUI extends JFrame {
 
 	private static final long serialVersionUID = 6330962125257015674L;
 
@@ -30,54 +30,18 @@ public class MedieninformationGUI extends JDialog {
 	private MediumDTO m;
 
 	// Konstruktor
-	public MedieninformationGUI(Frame f, MediumDTO m, MitgliedDTO mg) {
-		this.mg = mg;
-		this.m = m;
-
-		this.setSize(600, 250);
-		this.setLocation(550, 300);
-		this.setResizable(false);
-		this.setLayout(null);
-		this.setModal(true);
-		this.setLocationRelativeTo(f);
-		this.addWindowListener(new WindowListener() {
-
-			public void windowActivated(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			public void windowClosed(WindowEvent arg0) {
-				setEnabled(false);
-				setVisible(false);
-				dispose();
-
-			}
-
-			public void windowClosing(WindowEvent arg0) {
-
-			}
-
-			public void windowDeactivated(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			public void windowDeiconified(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			public void windowIconified(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			public void windowOpened(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
+	public MedieninformationGUI(MediumDTO m, MitgliedDTO mg) {
+		super("Medieninformationen");
+		mg = mg;
+		m = m;
+		
+		
+		setSize(600, 250);
+		setLocation(550, 300);
+		setResizable(false);
+		setLayout(null);
+		setLocationRelativeTo(this);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		pan = new JPanel();
 		pan.setSize(600, 250);
@@ -102,8 +66,8 @@ public class MedieninformationGUI extends JDialog {
 			}
 		}
 
-		this.add(pan);
-		this.setVisible(true);
+		add(pan);
+		setVisible(true);
 	}
 
 	// Methoden
