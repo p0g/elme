@@ -34,9 +34,10 @@ public class MainGUI extends JFrame {
 	 * @param medien ArrayList aller vorhandenen Medien
 	 */
 	public MainGUI(final MitgliedDTO mitglied, ArrayList<MediumDTO> medien) {
-		super("Hauptmenü");
+		super("Hauptmen\u00fc");
 		setSize(500, 550);
-		setLocation(400, 10);
+		setLocation(320, 10);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
 		
 		JPanel pan = new JPanel();
@@ -66,9 +67,8 @@ public class MainGUI extends JFrame {
 		btn_logout.setLocation(300, 110);
 		btn_logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// System beenden
 				MitgliedBO.getInstance().deregister(mitglied);
-				
+				dispose();
 			}
 		});
 		pan.add(btn_logout);

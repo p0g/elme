@@ -40,7 +40,6 @@ public class MedieninformationGUI extends JFrame {
 		setResizable(false);
 		setLayout(null);
 		setLocationRelativeTo(this);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		pan = new JPanel();
 		pan.setSize(600, 250);

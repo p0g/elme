@@ -15,6 +15,7 @@ public class StatistikGUI extends JFrame implements Observer{
 		setResizable(false);
 		setLayout(null);
 		setLocation(10, 10);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
 		JPanel lPanel = new JPanel();
 		lPanel.setSize(300, 200);
@@ -31,7 +32,6 @@ public class StatistikGUI extends JFrame implements Observer{
 		lPanel.add(lLabel2);
 
 		add(lPanel);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 

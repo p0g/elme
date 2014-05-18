@@ -40,19 +40,20 @@ public class LoginGUI extends JFrame {
 		setResizable(false);
 		setLayout(null);
 		setLocation(10, 240);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
 		JPanel pan = new JPanel();
 		pan.setSize(320, 280);
 		pan.setLayout(null);
 
 		JLabel lab = new JLabel("Benutzername:");
-		lab.setSize(90, 20);
-		lab.setLocation(70, 50);
+		lab.setSize(100, 20);
+		lab.setLocation(30, 50);
 		pan.add(lab);
 
 		lab = new JLabel("Passwort:");
-		lab.setSize(90, 20);
-		lab.setLocation(70, 80);
+		lab.setSize(100, 20);
+		lab.setLocation(30, 80);
 		pan.add(lab);
 
 		tf1 = new JTextField();
@@ -71,7 +72,7 @@ public class LoginGUI extends JFrame {
 
 		btn = new JButton("Einloggen");
 		btn.setSize(100, 20);
-		btn.setLocation(135, 130);
+		btn.setLocation(100, 130);
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login();
@@ -86,7 +87,6 @@ public class LoginGUI extends JFrame {
 		lbl.setVisible(false);
 
 		this.add(pan);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		// LoginGUI anzeigen
 		this.setVisible(true);
