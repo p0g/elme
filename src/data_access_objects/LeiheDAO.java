@@ -36,8 +36,8 @@ public class LeiheDAO {
 		
 			String sql = "INSERT INTO leihen (date,mitglied,medium) "
 					   + "VALUES ('"+ lei.getDatum() +"','"+ lei.getMitglied().getMitgliedID() +"','"+ lei.getMedium().getMediumID() +"');";
-
-			db.insert(sql);		
+			System.out.println(lei.getDatum());
+			//db.insert(sql);		
 			
 			db.disconnect();			
 		} catch (Exception e) {

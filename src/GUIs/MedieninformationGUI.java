@@ -32,9 +32,8 @@ public class MedieninformationGUI extends JFrame {
 	// Konstruktor
 	public MedieninformationGUI(MediumDTO m, MitgliedDTO mg) {
 		super("Medieninformationen");
-		mg = mg;
-		m = m;
-		
+		this.mg = mg;
+		this.m = m;
 		
 		setSize(600, 250);
 		setLocation(550, 300);
@@ -59,6 +58,7 @@ public class MedieninformationGUI extends JFrame {
 				if (m instanceof BuchDTO) {
 					createABookWindow((BuchDTO) m);
 				} else {
+					System.out.println("Medium wurde nicht erkannt");
 					JLabel lab = new JLabel("Das Medium wurde nicht erkannt!");
 					lab.setBounds(200, 150, 200, 20);
 					pan.add(lab);

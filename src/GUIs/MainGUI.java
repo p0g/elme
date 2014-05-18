@@ -34,7 +34,7 @@ public class MainGUI extends JFrame {
 	 * @param medien ArrayList aller vorhandenen Medien
 	 */
 	public MainGUI(final MitgliedDTO mitglied, ArrayList<MediumDTO> medien) {
-		super("HauptmenŸ");
+		super("Hauptmenü");
 		setSize(500, 550);
 		setLocation(400, 10);
 		

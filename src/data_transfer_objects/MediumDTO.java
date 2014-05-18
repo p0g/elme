@@ -44,5 +44,9 @@ public abstract class MediumDTO {
 	public void setEntliehen(boolean value) {
 		this.entliehen = value;
 	}
+	
+	public String toString(){
+		return this.titel;
+	}
 
 }
