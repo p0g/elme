@@ -7,8 +7,8 @@ public class DvDDTO extends MediumDTO {
 	private int spieldauer;
 
 	// Konstruktor
-	public DvDDTO(String titel, int jahr, int fsk, int spieldauer) {
-		super(titel, jahr);
+	public DvDDTO(int id, boolean entliehen, String titel, int jahr, int fsk, int spieldauer) {
+		super(id, titel, jahr, entliehen);
 		signatur = "DVD-" + mediumID;
 
 		this.fsk = fsk;

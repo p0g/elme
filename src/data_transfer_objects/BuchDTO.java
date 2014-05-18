@@ -8,8 +8,8 @@ public class BuchDTO extends MediumDTO {
 	private String isbn;
 
 	// Konstruktor
-	public BuchDTO(String titel, int jahr, String verfasser, String verlag, String isbn) {
-		super(titel, jahr);
+	public BuchDTO(int id, boolean entliehen, String titel,  int jahr, String verfasser, String verlag, String isbn) {
+		super(id, titel, jahr, entliehen);
 		signatur = "B-" + mediumID;
 
 		this.verfasser = verfasser;

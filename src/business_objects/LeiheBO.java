@@ -2,6 +2,7 @@ package business_objects;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import data_access_objects.LeiheDAO;
 import data_transfer_objects.LeiheDTO;
 
 public class LeiheBO {
@@ -25,6 +26,7 @@ public class LeiheBO {
 		calendar.setTime(l.getDatum());
 		calendar.add(Calendar.DAY_OF_MONTH, 14);
 		l.setDate(calendar.getTime());
+		LeiheDAO.getInstance().update(l);
 	}
 
 	public void druckeDaten(LeiheDTO l) {

@@ -24,6 +24,10 @@ public class DBMySQL {
 		return this.stat.executeQuery(sql);
 	}
 	
+	public int update(String sql) throws Exception {
+		return this.stat.executeUpdate(sql);
+	}
+	
 	public ResultSet insert(String sql) throws Exception {
 		// Übergebenen Insert-SQL-Statement ausführen und Generierte Keys (rs.getInt(1)) zurückgeben
 		this.stat.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);

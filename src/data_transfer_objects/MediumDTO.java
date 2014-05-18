@@ -5,7 +5,6 @@ package data_transfer_objects;
 public abstract class MediumDTO {
 
 	// Attribute
-	private static int ANZAHL = 0;
 	protected int mediumID;
 	protected String signatur;
 	protected String titel;
@@ -13,11 +12,11 @@ public abstract class MediumDTO {
 	protected boolean entliehen;
 
 	// Konstruktor
-	public MediumDTO(String titel, int jahr) {
-		mediumID = ANZAHL++;
+	public MediumDTO(int id, String titel, int jahr, boolean entliehen) {
+		this.mediumID = id;
 		this.titel = titel;
 		this.jahr = jahr;
-		entliehen = false;
+		this.entliehen = entliehen;
 	}
 
 	// Methoden

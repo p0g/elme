@@ -13,10 +13,11 @@ public class LeiheDTO {
 	private MediumDTO medium;
 
 	// Konstruktor
-	public LeiheDTO(MitgliedDTO mitglied, MediumDTO medium) {
+	public LeiheDTO(int id, MitgliedDTO mitglied, MediumDTO medium) {
 		this.datum = new Date(); // Ausleihdatum auf heute setzen
 		LeiheBO.getInstance().verlaenger(this); // Ausleihdatum einmal
 												// verlaengern
+		this.leihID = id;
 		this.mitglied = mitglied;
 		this.medium = medium;
 	}
@@ -27,7 +28,8 @@ public class LeiheDTO {
 	}
 
 	public Date getDatum() {
-		return datum;
+		java.sql.Date sqlDate = new java.sql.Date(datum.getTime());
+		return sqlDate;
 	}
 
 	public MitgliedDTO getMitglied() {

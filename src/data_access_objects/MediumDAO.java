@@ -89,7 +89,6 @@ public class MediumDAO {
 		} catch (Exception e) {
 			System.out.println("Fehler!");
 			e.printStackTrace();
-			
 		}
 	}
 
@@ -102,6 +101,44 @@ public class MediumDAO {
 	public MediumDTO read(int i) {
 		// Nimmt das entsprechende Medium aus der DB und gibt es zurück
 		// Die Methode brauchte ich um einen Fehler wegzukriegen
+		try {
+			DBMySQL db = new DBMySQL();
+			
+			String sql = "SELECT medium_typ_id FROM medien m WHERE mediumid = "+ i +";";			
+			ResultSet rs = db.exec(sql);	
+			rs.next();
+			int typ = rs.getInt("medium_typ_id");
+			boolean ent = false;
+			
+			switch (typ) {
+			case 1: // Typ Buch
+				 sql = "SELECT * FROM medien m JOIN buecher b ON m.mediumid = b.mediumid WHERE m.mediumid = "+ i +";";
+				 rs = db.exec(sql);rs.next();				 
+				 if(rs.getInt("entliehen")==1){ent = true;}else{ent = false;}
+				 return new BuchDTO(rs.getInt("mediumid"), ent , rs.getString("titel"), rs.getInt("jahr"), rs.getString("verfasser"), rs.getString("verlag"), rs.getString("isbn"));
+
+			case 2: // Typ DVD
+				sql = "SELECT * FROM medien m JOIN dvds b ON m.mediumid = b.mediumid WHERE m.mediumid = "+ i +";";
+				rs = db.exec(sql);rs.next();
+				if(rs.getInt("entliehen")==1){ent = true;}else{ent = false;}
+				return new DvDDTO(rs.getInt("mediumid"), ent , rs.getString("titel"), rs.getInt("jahr"), rs.getInt("fsk"), rs.getInt("spieldauer"));
+			case 3: // Typ CD
+				sql = "SELECT * FROM medien m JOIN cds b ON m.mediumid = b.mediumid WHERE m.mediumid = "+ i +";";
+				rs = db.exec(sql);rs.next();
+				if(rs.getInt("entliehen")==1){ent = true;}else{ent = false;}
+				return new CDDTO(rs.getInt("mediumid"), ent , rs.getString("titel"), rs.getInt("jahr"), rs.getString("interpret"), rs.getString("label"));
+
+			default:
+				break;
+			}			
+			
+			
+			db.disconnect();
+		
+		} catch (Exception e) {
+			System.out.println("Fehler!");
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -110,8 +147,9 @@ public class MediumDAO {
 		// ATM NUR DEN ENTLIEHENSTATUS
 		try {
 			DBMySQL db = new DBMySQL();
-			String sql = "UPDATE medien SET entliehen = 1 WHERE mediumid = '" + m.getMediumID() + "';";			
-			db.exec(sql);			
+			String sql = "UPDATE medien SET entliehen = 1 WHERE mediumid = '" + m.getMediumID() + "';";
+			System.out.println(sql);
+			db.update(sql);			
 			db.disconnect();			
 		} catch (Exception e) {
 			System.out.println("MySQL-Fehler beim Aender des ENTLIEHEN-Status: "); e.printStackTrace();
@@ -155,6 +193,7 @@ public class MediumDAO {
 		// Erstmal für jeden Medium-Typ selbst (UNION funzt nicht)		
 		
 		ArrayList<MediumDTO> medien = new ArrayList<MediumDTO>();
+		boolean e = false;
 		try{
 			DBMySQL db = new DBMySQL();
 			
@@ -163,7 +202,8 @@ public class MediumDAO {
 			ResultSet rs = db.exec(sql);	
 			BuchDTO b = null;
 			while(rs.next()){
-				b = new BuchDTO(rs.getString("titel"), rs.getInt("jahr"), rs.getString("verfasser"), rs.getString("verlag"), rs.getString("isbn"));
+				if(rs.getInt("entliehen")==1){e = true;}else{e = false;}
+				b = new BuchDTO(rs.getInt("mediumid"), e , rs.getString("titel"), rs.getInt("jahr"), rs.getString("verfasser"), rs.getString("verlag"), rs.getString("isbn"));
 				medien.add(b);
 			}
 
@@ -172,7 +212,8 @@ public class MediumDAO {
 			rs = db.exec(sql);	
 			DvDDTO d = null;
 			while(rs.next()){
-				d = new DvDDTO(rs.getString("titel"), rs.getInt("jahr"), rs.getInt("fsk"), rs.getInt("spieldauer"));
+				if(rs.getInt("entliehen")==1){e = true;}else{e = false;}
+				d = new DvDDTO(rs.getInt("mediumid"), e , rs.getString("titel"), rs.getInt("jahr"), rs.getInt("fsk"), rs.getInt("spieldauer"));
 				medien.add(d);
 			}
 			
@@ -181,16 +222,22 @@ public class MediumDAO {
 			rs = db.exec(sql);	
 			CDDTO c = null;
 			while(rs.next()){
-				c = new CDDTO(rs.getString("titel"), rs.getInt("jahr"), rs.getString("interpret"), rs.getString("label"));
+				if(rs.getInt("entliehen")==1){e = true;}else{e = false;}
+				c = new CDDTO(rs.getInt("mediumid"), e , rs.getString("titel"), rs.getInt("jahr"), rs.getString("interpret"), rs.getString("label"));
 				medien.add(c);
 			}		
 
 			db.disconnect();			
-		} catch (Exception e) {
+		} catch (Exception err) {
 			System.out.println("Fehler beim holen der ArrayList aller Medien!");
-			e.printStackTrace();
+			err.printStackTrace();
 		}
 		return medien;		
+	}
+
+	public MediumDTO getMediumById(int int1) {
+		// Holt ein Medium anhand der ID
+		return null;
 	}
 
 	// Warum ist diese Klasse nicht abstrakt, wie die anderen Mediumklassen

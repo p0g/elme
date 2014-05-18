@@ -16,24 +16,24 @@ public class ConcreteMedienFactory implements MedienFactoryI {
 	 * erzeugt ein DTO-Objekt vom Typ BuchDTO.
 	 * Erwartet die gleichen Parameter wie der Konstruktor der Klasse BuchDTO.
 	 */
-	public BuchDTO createBook(String titel, int jahr, String verfasser, String verlag, String isbn) {
-		return new BuchDTO(titel, jahr, verfasser, verlag, isbn);
+	public BuchDTO createBook(int id, String titel, boolean entliehen, int jahr, String verfasser, String verlag, String isbn) {
+		return new BuchDTO(id, entliehen, titel, jahr, verfasser, verlag, isbn);
 	}
 
 	/*
 	 * erzeugt ein DTO-Objekt vom Typ CDDTO.
 	 * Erwartet die gleichen Parameter wie der Konstruktor der Klasse CDDTO.
 	 */
-	public CDDTO createCD(String titel, int jahr, String interpret, String label) {
-		return new CDDTO(titel, jahr, interpret, label);
+	public CDDTO createCD(int id, String titel, boolean entliehen, int jahr, String interpret, String label) {
+		return new CDDTO(id, entliehen, titel, jahr, interpret, label);
 	}
 
 	/*
 	 * erzeugt ein DTO-Objekt vom Typ DVDDTO.
 	 * Erwartet die gleichen Parameter wie der Konstruktor der Klasse DVDDTO.
 	 */
-	public DvDDTO createDVD(String titel, int jahr, int fsk, int spieldauer) {
-		return new DvDDTO(titel, jahr, fsk, spieldauer);
+	public DvDDTO createDVD(int id, String titel, boolean entliehen, int jahr, int fsk, int spieldauer) {
+		return new DvDDTO(id, entliehen, titel, jahr, fsk, spieldauer);
 	}
 	
 

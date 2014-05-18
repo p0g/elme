@@ -1,9 +1,14 @@
 package data_access_objects;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
+import business_objects.MediumBO;
 import business_objects.MitgliedBO;
 import sonstiges.Adresse;
 import sonstiges.DBMySQL;
+import data_transfer_objects.BuchDTO;
+import data_transfer_objects.CDDTO;
+import data_transfer_objects.DvDDTO;
 import data_transfer_objects.LeiheDTO;
 import data_transfer_objects.MediumDTO;
 import data_transfer_objects.MitgliedDTO;
@@ -37,7 +42,7 @@ public class LeiheDAO {
 			String sql = "INSERT INTO leihen (date,mitglied,medium) "
 					   + "VALUES ('"+ lei.getDatum() +"','"+ lei.getMitglied().getMitgliedID() +"','"+ lei.getMedium().getMediumID() +"');";
 			System.out.println(lei.getDatum());
-			//db.insert(sql);		
+			db.insert(sql);		
 			
 			db.disconnect();			
 		} catch (Exception e) {
@@ -49,7 +54,7 @@ public class LeiheDAO {
 	// Die Methode mit diesem Parameter brauchte ich, um einen Fehler
 	// wegzukriegen. Vlt brauchen wir noch eine read-Methode mit einem anderem
 	// Parameter?
-	public LeiheDTO read(MediumDTO m) {
+	/*public LeiheDTO read(MediumDTO m) {
 		// Nimmt die entsprechende Leihe aus der DB und gibt sie zurück
 		// Das Medium identifiziert die Leihe eindeutig
 		try {
@@ -67,7 +72,7 @@ public class LeiheDAO {
 			System.out.println("MySQL-Fehler: "); e.printStackTrace();
 		}
 		return null;
-	}
+	}*/
 
 	public LeiheDTO read(int leihID) {
 		// Nimmt die entsprechende Leihe aus der DB und gibt sie zurück
@@ -89,6 +94,30 @@ public class LeiheDAO {
 		} catch (Exception e) {
 			System.out.println("MySQL-Fehler: "); e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<LeiheDTO> getLeihenOf(MitgliedDTO m){
+		ArrayList<LeiheDTO> leihen = new ArrayList<LeiheDTO>();
+				
+		try{
+			DBMySQL db = new DBMySQL();
+			
+			// Hole Buecher
+			String sql = "SELECT * FROM leihen lei WHERE mitglied = '"+ m.getMitgliedID() +"';";			
+			ResultSet rs = db.exec(sql);	
+			LeiheDTO l = null;
+			while(rs.next()){
+				//System.out.println("Medium: "+ rs.getInt("medium"));
+				MediumDTO medium = MediumDAO.getInstance().read(rs.getInt("medium"));
+				l = new LeiheDTO(rs.getInt("id"), m, medium);
+				leihen.add(l);
+			}
+			db.disconnect();			
+		} catch (Exception err) {
+			System.out.println("Fehler beim holen der ArrayList aller Medien!");
+			err.printStackTrace();
+		}
+		return leihen;
 	}
 
 }

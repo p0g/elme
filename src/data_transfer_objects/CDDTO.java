@@ -7,8 +7,8 @@ public class CDDTO extends MediumDTO {
 	private String label;
 
 	// Konstruktor
-	public CDDTO(String titel, int jahr, String interpret, String label) {
-		super(titel, jahr);
+	public CDDTO(int id, boolean entliehen, String titel, int jahr, String interpret, String label) {
+		super(id, titel, jahr, entliehen);
 		signatur = "CD-" + mediumID;
 
 		this.interpret = interpret;
