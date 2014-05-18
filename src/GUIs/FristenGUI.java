@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -31,13 +33,13 @@ public class FristenGUI extends JFrame {
 	/**
 	 * Zeigt vorhandene Leihen/Medien des Users an
 	 * 
-	 * @param frame
-	 *            Hauptfenster
-	 * @param mitglied
-	 *            Mitgliedobjekt
+	 * @param mitglied Mitgliedobjekt
 	 */
 	public FristenGUI(MitgliedDTO mitglied) {
-
+		super("Leihfristen");
+		setSize(500, 550);
+		setLocation(320, 10);
+		
 		JPanel panel = new JPanel();
 
 		String[] medium;
@@ -49,12 +51,12 @@ public class FristenGUI extends JFrame {
 			medium[0] = leihe.getMedium().getTitel();
 			medium[1] = leihe.getMedium().getClass().toString().replace("class ", "");
 			medium[2] = leihe.getDatum().toString();
-			medium[3] = "Verlängern";
+			medium[3] = "Verl\u00e4ngern";
 			list_table.add(medium);
 			list_leihe.add(leihe);
 		}
 
-		String[] colNames = new String[] { "Titel", "Art", "Leihfrist", "Verlängern" };
+		String[] colNames = new String[] { "Titel", "Art", "Leihfrist", "Verl\u00e4ngern" };
 		String[][] data = new String[list_table.size()][4];
 
 		for (int i = 0; i < list_table.size(); i++) {
@@ -63,15 +65,12 @@ public class FristenGUI extends JFrame {
 
 		panel.add(new TabelleSortieren(data, colNames, list_leihe));
 
-		this.add(panel);
-		this.setSize(500, 500);
-		this.pack();
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
+		add(panel);
+		setVisible(true);
 	}
 
 	/**
-	 * Interne Klasse zur sortierung der Tabelle
+	 * Interne Klasse zur Sortierung der Tabelle
 	 */
 	class TabelleSortieren extends JPanel {
 
@@ -100,7 +99,7 @@ public class FristenGUI extends JFrame {
 				}
 			};
 
-			// externe Klasse um einen "Verlängerbutton" in die Tabelle
+			// externe Klasse um einen "VerlŠngerbutton" in die Tabelle
 			// einzubinden
 			ButtonColumn buttonColumn = new ButtonColumn(table, verlaenger, 3);
 			buttonColumn.setMnemonic(KeyEvent.VK_D);
