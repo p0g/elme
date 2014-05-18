@@ -1,5 +1,6 @@
 package data_access_objects;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import business_objects.MediumBO;
@@ -34,7 +35,7 @@ public class LeiheDAO {
 		return uniqueInstance;
 	}
 
-	public void create(LeiheDTO lei) {
+	public int create(LeiheDTO lei) {
 		// Eine neue Leihe wird in die DB aufgenommen
 		try {
 			DBMySQL db = new DBMySQL();				
@@ -42,13 +43,15 @@ public class LeiheDAO {
 			String sql = "INSERT INTO leihen (date,mitglied,medium) "
 					   + "VALUES ('"+ lei.getDatum() +"','"+ lei.getMitglied().getMitgliedID() +"','"+ lei.getMedium().getMediumID() +"');";
 			System.out.println(lei.getDatum());
-			db.insert(sql);		
+			ResultSet rs = db.insert(sql);
+			rs.next();
 			
-			db.disconnect();			
+			return rs.getInt(1);
+			//db.disconnect();			
 		} catch (Exception e) {
 			System.out.println("MySQL-Fehler beim Anlegen einer Leihe: "); e.printStackTrace();
 		}
-		
+		return 0;	
 	}
 
 	// Die Methode mit diesem Parameter brauchte ich, um einen Fehler
@@ -82,6 +85,14 @@ public class LeiheDAO {
 
 	public void update(LeiheDTO m) {
 		// aktualisiert die entsprechende Leihe in der DB
+		try {
+			DBMySQL db = new DBMySQL();
+			String sql = "UPDATE leihen SET date = '"+m.getDatum()+"' WHERE id = '" + m.getLeihID() + "';";
+			db.update(sql);			
+			db.disconnect();			
+		} catch (Exception e) {
+			System.out.println("MySQL-Fehler beim Aendern des LeihenDatums: "); e.printStackTrace();
+		}
 	}
 
 	public void delete(LeiheDTO m) {
@@ -107,9 +118,10 @@ public class LeiheDAO {
 			ResultSet rs = db.exec(sql);	
 			LeiheDTO l = null;
 			while(rs.next()){
-				//System.out.println("Medium: "+ rs.getInt("medium"));
 				MediumDTO medium = MediumDAO.getInstance().read(rs.getInt("medium"));
-				l = new LeiheDTO(rs.getInt("id"), m, medium);
+				
+				l = new LeiheDTO(rs.getInt("id"), rs.getDate("date"), m, medium);
+				
 				leihen.add(l);
 			}
 			db.disconnect();			

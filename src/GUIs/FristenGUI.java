@@ -21,6 +21,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import sonstiges.ButtonColumn;
+import data_access_objects.LeiheDAO;
 import data_transfer_objects.LeiheDTO;
 import data_transfer_objects.MitgliedDTO;
 import business_objects.LeiheBO;
@@ -46,12 +47,12 @@ public class FristenGUI extends JFrame {
 		ArrayList<String[]> list_table = new ArrayList<String[]>();
 		ArrayList<LeiheDTO> list_leihe = new ArrayList<LeiheDTO>();
 
-		for (LeiheDTO leihe : mitglied.getLeihen()) {
+		for (LeiheDTO leihe : LeiheDAO.getInstance().getLeihenOf(mitglied)) {
 			medium = new String[4];
 			medium[0] = leihe.getMedium().getTitel();
 			medium[1] = leihe.getMedium().getClass().toString().replace("class ", "");
 			medium[2] = leihe.getDatum().toString();
-			medium[3] = "Verl\u00e4ngern";
+			medium[3] = "Verlaengern";
 			list_table.add(medium);
 			list_leihe.add(leihe);
 		}

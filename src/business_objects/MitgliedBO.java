@@ -4,6 +4,9 @@ import sonstiges.MitgliedNichtExistentException;
 import data_access_objects.*;
 import data_transfer_objects.*;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Observable;
 
 public class MitgliedBO {
@@ -30,8 +33,12 @@ public class MitgliedBO {
 	 * @param m Medium
 	 */
 	public void addLeihe(MitgliedDTO mg, MediumDTO m) {
-		LeiheDTO l = new LeiheDTO(mg, m);
-		LeiheDAO.getInstance().create(l);
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(calendar.getTime());
+		calendar.add(Calendar.DAY_OF_MONTH, 14);
+		
+		LeiheDTO temp_l = new LeiheDTO(0, calendar.getTime(), mg, m);
+		int l_id = LeiheDAO.getInstance().create(temp_l);
 		m.setEntliehen(true);
 		MediumDAO.getInstance().update(m);
 	}
@@ -42,9 +49,9 @@ public class MitgliedBO {
 	 * @param m Medium
 	 * @return gefundene Leihe oder Null
 	 */
-	public LeiheDTO getLeihe(MediumDTO m) {
+	/*public LeiheDTO getLeihe(MediumDTO m) {
 		return LeiheDAO.getInstance().read(m);
-	}
+	}*/
 
 	/**
 	 * Eine Bestimmte Leihe entfernen
