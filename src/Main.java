@@ -46,9 +46,9 @@ public class Main {
 		frame.setVisible(false);*/
 		
 		StatistikGUI lStatistikGUI = new StatistikGUI();
-		LoginGUI login = new LoginGUI();
+		LoginGUI login = new LoginGUI(lStatistikGUI);
+		
 		MitgliedDTO lMitglied;
-		MainGUI lMainGUI;
 
 		if (login.isErfolg()) {
 			// Login is ok

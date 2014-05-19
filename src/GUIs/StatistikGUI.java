@@ -1,4 +1,5 @@
 package GUIs;
+
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -7,7 +8,12 @@ import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public class StatistikGUI extends JFrame implements Observer{
+public class StatistikGUI extends JFrame implements Observer {
+
+	private int zCurrentLogin = 0;
+	private int zTotalLogin = 0;
+	JLabel zLabel1 = null;
+	JLabel zLabel2 = null;
 
 	public StatistikGUI() {
 		super("Login Statistik");
@@ -21,23 +27,28 @@ public class StatistikGUI extends JFrame implements Observer{
 		lPanel.setSize(300, 200);
 		lPanel.setLayout(null);
 
-		JLabel lLabel1 = new JLabel("Current Logins: ");
-		lLabel1.setSize(200, 20);
-		lLabel1.setLocation(50, 50);
-		lPanel.add(lLabel1);
+		zLabel1 = new JLabel("Current Logins: " + zCurrentLogin);
+		zLabel1.setSize(200, 20);
+		zLabel1.setLocation(50, 50);
+		lPanel.add(zLabel1);
 
-		JLabel lLabel2 = new JLabel("Total Logins: ");
-		lLabel2.setSize(200, 20);
-		lLabel2.setLocation(50, 100);
-		lPanel.add(lLabel2);
+		zLabel2 = new JLabel("Total Logins: " + zTotalLogin);
+		zLabel2.setSize(200, 20);
+		zLabel2.setLocation(50, 100);
+		lPanel.add(zLabel2);
 
 		add(lPanel);
 		setVisible(true);
 	}
 
-	
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		if (((String) arg).equals("Login")) {
+			zCurrentLogin++;
+			zTotalLogin++;
+		} else if (((String) arg).equals("Logout")) {
+			zCurrentLogin--;
+		}
+		zLabel1.setText("Current Logins: " + zCurrentLogin);
+		zLabel2.setText("Total Logins: " + zTotalLogin);
 	}
 }

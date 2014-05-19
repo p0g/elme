@@ -1,4 +1,5 @@
 package GUIs;
+
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,20 +28,23 @@ public class LoginGUI extends JFrame {
 	private boolean erfolg;
 
 	// Mitgliedsobjekt das mit Mitglied belegt wird, wenn eingeloggt
-	MitgliedDTO mitglied = null;
+	private MitgliedDTO mitglied = null;
+	private StatistikGUI zStatistikGUI = null;
 
 	/**
 	 * Konstruktor der LoginGUI
 	 * 
-	 * @param mv Mitgliederverwaltung
+	 * @param mv
+	 *            Mitgliederverwaltung
 	 */
-	public LoginGUI() {
+	public LoginGUI(StatistikGUI pStatistikGUI) {
 		super("Login");
 		setSize(300, 200);
 		setResizable(false);
 		setLayout(null);
 		setLocation(10, 240);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		zStatistikGUI = pStatistikGUI;
 
 		JPanel pan = new JPanel();
 		pan.setSize(320, 280);
@@ -100,6 +104,7 @@ public class LoginGUI extends JFrame {
 
 		try {
 			mitglied = MitgliedBO.getInstance().validiere(name, pw);
+			MitgliedBO.getInstance().addObserver(zStatistikGUI);
 		} catch (MitgliedNichtExistentException e) {
 			JOptionPane.showMessageDialog(this, "Dieses Mitglied existiert nicht.");
 		}
@@ -113,6 +118,7 @@ public class LoginGUI extends JFrame {
 		} else {
 			setMitglied(mitglied);
 			erfolg = true;
+			MitgliedBO.getInstance().login();
 			MainGUI lMainGUI = new MainGUI(mitglied, MediumDAO.getInstance().getMedien());
 		}
 	}

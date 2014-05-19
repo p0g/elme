@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Observable;
 
-public class MitgliedBO {
+public class MitgliedBO extends Observable {
 
 	// Attribute
 	private static MitgliedBO uniqueInstance;
@@ -71,7 +71,6 @@ public class MitgliedBO {
 	 */
 	public boolean validierePasswort(MitgliedDTO m, String angeblichesPasswort) {
 		return m.getPasswort().equals(angeblichesPasswort);
-
 	}
 	
 	/**
@@ -98,8 +97,13 @@ public class MitgliedBO {
 	}
 
 	public void deregister(MitgliedDTO mitglied) {
-		// TODO wie viele sind gerade eingelogt?
-		
+		this.setChanged();
+		this.notifyObservers("Logout");
+	}
+	
+	public void login(){
+		this.setChanged();
+		this.notifyObservers("Login");
 	}
 
 }
