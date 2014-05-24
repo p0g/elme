@@ -13,6 +13,7 @@ public class DvDDTO extends MediumDTO {
 
 		this.fsk = fsk;
 		this.spieldauer = spieldauer;
+		this.typ = "DVD";
 	}
 
 	// Methoden

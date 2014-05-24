@@ -10,6 +10,7 @@ public abstract class MediumDTO {
 	protected String titel;
 	protected int jahr;
 	protected boolean entliehen;
+	protected String typ;
 
 	// Konstruktor
 	public MediumDTO(int id, String titel, int jahr, boolean entliehen) {
@@ -42,6 +43,10 @@ public abstract class MediumDTO {
 
 	public void setEntliehen(boolean value) {
 		this.entliehen = value;
+	}
+	
+	public String getTypName() {
+		return typ;
 	}
 	
 	public String toString(){

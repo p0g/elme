@@ -15,6 +15,7 @@ public class BuchDTO extends MediumDTO {
 		this.verfasser = verfasser;
 		this.verlag = verlag;
 		this.isbn = isbn;
+		this.typ = "Buch";
 	}
 
 	// Methoden
@@ -29,5 +30,4 @@ public class BuchDTO extends MediumDTO {
 	public String getIsbn() {
 		return isbn;
 	}
-
 }

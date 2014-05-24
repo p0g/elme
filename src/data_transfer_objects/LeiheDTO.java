@@ -30,7 +30,7 @@ public class LeiheDTO {
 
 	public Date getDatum() {
 		java.sql.Date sqlDate = new java.sql.Date(datum.getTime());
-		System.out.println(sqlDate);
+		//System.out.println(sqlDate);
 		return sqlDate;
 	}
 

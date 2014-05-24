@@ -12,13 +12,22 @@ public class LoginGUI_Test {
 	      System.out.println("[jUnit] Testbeginn Mitgliedsvalidierung");
 	}
 	
-	@Test(expected= MitgliedNichtExistentException.class)
-	public void LoginTest(){
+	@Test
+	public void LoginNotNullTest(){
 		//Testfall 1: Vorhandenes Mitglied einloggen		
 		try {
 			Assert.assertNotNull(MitgliedBO.getInstance().validiere("mamu", "mamu1"));
 		} catch (MitgliedNichtExistentException e) {
-			System.out.println("[jUnit] Fehler beim validieren vom Login:");
+			e.getMessage();
+		} 
+	}
+	
+	@Test
+	public void LoginNullTest(){
+		//Testfall 2: Nicht-Vorhandenes Mitglied einloggen versuchen		
+		try {
+			Assert.assertNull(MitgliedBO.getInstance().validiere("mamu", "mamuWRONG"));
+		} catch (MitgliedNichtExistentException e) {
 			e.getMessage();
 		} 
 	}

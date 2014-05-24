@@ -13,6 +13,7 @@ public class CDDTO extends MediumDTO {
 
 		this.interpret = interpret;
 		this.label = label;
+		this.typ = "CD";
 	}
 
 	// Methoden

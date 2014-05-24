@@ -24,8 +24,13 @@ public class MitgliedDAO_Test {
 	}
 	
 	@Test
-	public void readTest(){
+	public void readNullTest1(){
 		// Testfall 2: Nicht vorhandenes Mitglied aus DB lesen	
 		assertNull(MitgliedDAO.getInstance().read(9999));
+	}
+	@Test
+	public void readNotNullTest2(){
+		// Testfall 3: Vorhandenes Mitglied aus DB lesen	
+		assertNotNull(MitgliedDAO.getInstance().read(1001));
 	}
 }

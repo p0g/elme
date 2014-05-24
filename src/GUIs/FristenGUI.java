@@ -50,7 +50,8 @@ public class FristenGUI extends JFrame {
 		for (LeiheDTO leihe : LeiheDAO.getInstance().getLeihenOf(mitglied)) {
 			medium = new String[4];
 			medium[0] = leihe.getMedium().getTitel();
-			medium[1] = leihe.getMedium().getClass().toString().replace("class ", "");
+			//medium[1] = leihe.getMedium().getClass().toString().replace("class ", "");
+			medium[1] = leihe.getMedium().getTypName();
 			medium[2] = leihe.getDatum().toString();
 			medium[3] = "Verlaengern";
 			list_table.add(medium);
