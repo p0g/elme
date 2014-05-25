@@ -1,0 +1,1243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>570</x>
+      <y>360</y>
+      <w>114</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>BuchBO
+--
+ 
+--
++BuchBO(): ctor
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>426</x>
+      <y>360</y>
+      <w>108</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>CDBO
+--
+ 
+--
++CDBO(): ctor
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>726</x>
+      <y>360</y>
+      <w>114</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>DvDBO
+--
+ 
+--
++DvDBO(): ctor
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>558</x>
+      <y>144</y>
+      <w>144</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>LeiheBO
+--
+-uniqueInstance: LeiheBO
+--
+-LeiheBO(): ctor
++verlaenger(LeiheDTO l): void
++druckeDaten(LeiheDTO l): void
++getInstance(): LeiheBO
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>564</x>
+      <y>258</y>
+      <w>126</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+MediumBO
+--
+ 
+--
+ 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>486</x>
+      <y>0</y>
+      <w>312</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>MitgliedBO
+--
+-uniqueInstance: MitgliedBO
+--
+-MitgliedBO(): ctor
++getInstance(): MitgliedBO
++addLeihe(MitgliedDTO mg, MediumDTO m): void
++removeLeihe(LeiheDTO l): void
++validierePasswort(MitgliedDTO m, String angeblichesPasswort): boolean
++validiere(String benutzername, String angeblichesPasswort): MitgliedDTO
++deregister(MitgliedDTO mitglied): void
++login(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1212</x>
+      <y>132</y>
+      <w>228</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>LeiheDAO
+--
+-uniqueInstance: LeiheDAO
+--
+-LeiheDAO(): ctor
++getInstance(): LeiheDAO
++create(LeiheDTO lei): int
++read(int leihID): LeiheDTO
++update(LeiheDTO m): void
++delete(LeiheDTO m): void
++getLeihenOf(MitgliedDTO m): ArrayList&lt;LeiheDTO&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1440</x>
+      <y>270</y>
+      <w>168</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>MediumDAO
+--
+-uniqueInstance: MediumDAO
+--
+-MediumDAO(): ctor
++getInstance(): MediumDAO
++create(MediumDTO m): void
++read(String signatur): MediumDTO
++read(int i): MediumDTO
++update(MediumDTO m): void
++delete(MediumDTO m): void
++getMedien(): ArrayList&lt;MediumDTO&gt;
++getMediumById(int int1): MediumDTO
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>936</x>
+      <y>6</y>
+      <w>504</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>MitgliedDAO
+--
+-uniqueInstance: MitgliedDAO
+--
+-MitgliedDAO(): ctor
++getInstance(): MitgliedDAO
++create(String name, String vorname, String benutzername, String passwort, String geburtsdatum, Adresse adresse): void
++update(MitgliedDTO m): void
++read(int mitglieds_id): MitgliedDTO
++read(String benutzername): MitgliedDTO
++delete(MitgliedDTO m): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>960</x>
+      <y>1020</y>
+      <w>438</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>BuchDTO
+--
+-verfasser: String
+-verlag: String
+-isbn: String
+--
++BuchDTO(int id, boolean entliehen, String titel, int jahr, String verfasser, String verlag, String isbn): ctor
++getVerfasser(): String
++getVerlag(): String
++getIsbn(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>582</x>
+      <y>1032</y>
+      <w>372</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>CDDTO
+--
+-interpret: String
+-label: String
+--
++CDDTO(int id, boolean entliehen, String titel, int jahr, String interpret, String label): ctor
++getInterpret(): String
++getLabel(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1404</x>
+      <y>1032</y>
+      <w>354</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>DvDDTO
+--
+-fsk: int
+-spieldauer: int
+--
++DvDDTO(int id, boolean entliehen, String titel, int jahr, int fsk, int spieldauer): ctor
++getFsk(): int
++getSpieldauer(): int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1026</x>
+      <y>570</y>
+      <w>318</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>LeiheDTO
+--
+-leihID: int
+-ANZAHL: int
+-datum: Date
+-mitglied: MitgliedDTO
+-medium: MediumDTO
+--
++LeiheDTO(int id, Date d, MitgliedDTO mitglied, MediumDTO medium): ctor
++getLeihID(): int
++getDatum(): Date
++getMitglied(): MitgliedDTO
++getMedium(): MediumDTO
++setDate(Date value): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1044</x>
+      <y>792</y>
+      <w>276</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>MediumDTO
+{abstract}
+--
+#mediumID: int
+#signatur: String
+#titel: String
+#jahr: int
+#entliehen: boolean
+#typ: String
+--
++MediumDTO(int id, String titel, int jahr, boolean entliehen): ctor
++getMediumID(): int
++getSignatur(): String
++getTitel(): String
++getJahr(): int
++isEntliehen(): boolean
++setEntliehen(boolean value): void
++getTypName(): String
++toString(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1422</x>
+      <y>528</y>
+      <w>558</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>MitgliedDTO
+--
+-name: String
+-vorname: String
+-benutzername: String
+-passwort: String
+-adresse: Adresse
+-geburtsdatum: String
+-mitgliedID: int
+-ANZAHL: int
+-leihen = new ArrayList&lt;LeiheDTO&gt;(): ArrayList&lt;LeiheDTO&gt;
+--
++MitgliedDTO(int id, String name, String vorname, String benutzername, String passwort, String geburtsdatum, Adresse adresse): ctor
++getName(): String
++getVorname(): String
++getBenutzername(): String
++getPasswort(): String
++getAdresse(): Adresse
++getGeburtsdatum(): String
++getMitgliedID(): int
++getLeihen(): ArrayList&lt;LeiheDTO&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1422</x>
+      <y>792</y>
+      <w>174</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>FristenGUI
+--
+ 
+--
++FristenGUI(MitgliedDTO mitglied): ctor
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1782</x>
+      <y>792</y>
+      <w>180</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>LoginGUI
+--
+-lbl: JLabel
+-tf1: JTextField
+-tf2: JTextField
+-btn: JButton
+-erfolg: boolean
+-mitglied: MitgliedDTO
+-zStatistikGUI: StatistikGUI
+--
++LoginGUI(StatistikGUI pStatistikGUI): ctor
++Login(): void
++isErfolg(): boolean
+-setMitglied(MitgliedDTO mitglied): void
++getMitglied(): MitgliedDTO
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1422</x>
+      <y>882</y>
+      <w>324</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>MainGUI
+--
+-btn_leihen: JButton
+-btn_logout: JButton
+-btn_search: JButton
+-tf_search: JTextField
++al: ArrayList&lt;String&gt;
+--
++MainGUI(final MitgliedDTO mitglied, ArrayList&lt;MediumDTO&gt; medien): ctor
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>582</x>
+      <y>690</y>
+      <w>270</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>MedieninformationGUI
+--
+-serialVersionUID = 6330962125257015674L: long
+-pan: JPanel
+-mg: MitgliedDTO
+-m: MediumDTO
+--
++MedieninformationGUI(MediumDTO m, MitgliedDTO mg): ctor
+-createABookWindow(BuchDTO b): void
+-createACDWindow(CDDTO c): void
+-createADVDWindow(DvDDTO d): void
+-entleihe(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1788</x>
+      <y>1002</y>
+      <w>174</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>StatistikGUI
+--
+-zCurrentLogin: int
+-zTotalLogin: int
+~zLabel1: JLabel
+~zLabel2: JLabel
+--
++StatistikGUI(): ctor
++update(Observable o, Object arg): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1740</x>
+      <y>276</y>
+      <w>330</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;datatype&gt;&gt;
+Adresse
+--
+-strasse: String
+-hausnummer: int
+-plz: int
+-ort: String
+-land: String
+--
++Adresse(String strasse, int hausnummer, int plz, String ort, String land): ctor
++getStrasse(): String
++setStrasse(String strasse): void
++getHausnummer(): int
++setHausnummer(int hausnummer): void
++getPlz(): int
++setPlz(int plz): void
++getOrt(): String
++setOrt(String ort): void
++getLand(): String
++setLand(String land): void
++druckeDaten(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>738</y>
+      <w>558</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>ButtonColumn
+--
+-table: JTable
+-action: Action
+-mnemonic: int
+-originalBorder: Border
+-focusBorder: Border
+-renderButton: JButton
+-editButton: JButton
+-editorValue: Object
+-isButtonColumnEditor: boolean
+--
++ButtonColumn(JTable table, Action action, int column): ctor
++getFocusBorder(): Border
++setFocusBorder(Border focusBorder): void
++getMnemonic(): int
++setMnemonic(int mnemonic): void
++getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column): Component
++getCellEditorValue(): Object
++getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column): Component
++actionPerformed(ActionEvent e): void
++mousePressed(MouseEvent e): void
++mouseReleased(MouseEvent e): void
++mouseClicked(MouseEvent e): void
++mouseEntered(MouseEvent e): void
++mouseExited(MouseEvent e): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>96</x>
+      <y>1182</y>
+      <w>468</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>ConcreteMedienFactory
+--
+-uniqueInstance: ConcreteMedienFactory
+--
+-ConcreteMedienFactory(): ctor
++createBook(int id, String titel, boolean entliehen, int jahr, String verfasser, String verlag, String isbn): BuchDTO
++createCD(int id, String titel, boolean entliehen, int jahr, String interpret, String label): CDDTO
++createDVD(int id, String titel, boolean entliehen, int jahr, int fsk, int spieldauer): DvDDTO
++getInstance(): ConcreteMedienFactory
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1746</x>
+      <y>144</y>
+      <w>126</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>DBMySQL
+--
+~con: Connection
+~stat: Statement
+--
++DBMySQL(): ctor
++exec(String sql): ResultSet
++update(String sql): int
++insert(String sql): ResultSet
++disconnect(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>96</x>
+      <y>1032</y>
+      <w>468</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+MedienFactoryI
+--
+ 
+--
++createBook(int id, String titel, boolean entliehen, int jahr, String verfasser, String verlag, String isbn): BuchDTO
++createCD(int id, String titel, boolean entliehen, int jahr, String interpret, String label): CDDTO
++createDVD(int id, String titel, boolean entliehen, int jahr, int fsk, int spieldauer): DvDDTO
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>516</x>
+      <y>480</y>
+      <w>204</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>MitgliedNichtExistentException
+--
+ 
+--
++MitgliedNichtExistentException(String s): ctor
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>708</x>
+      <y>618</y>
+      <w>114</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Main
+--
+ 
+--
++main(String[] args): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>720</x>
+      <y>864</y>
+      <w>186</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>MitgliedDAO_Test
+--
+ 
+--
++create(): void
++createTest(): void
++readNullTest1(): void
++readNotNullTest2(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>396</x>
+      <y>636</y>
+      <w>114</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>LoginGUI_Test
+--
+ 
+--
++vor(): void
++LoginNotNullTest(): void
++LoginNullTest(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>606</x>
+      <y>288</y>
+      <w>30</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>18;18;18;72</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>606</x>
+      <y>318</y>
+      <w>186</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;18;174;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>462</x>
+      <y>318</y>
+      <w>174</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;18;162;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>762</x>
+      <y>318</y>
+      <w>30</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;18;18;42</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>462</x>
+      <y>318</y>
+      <w>30</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;18;18;42</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1158</x>
+      <y>954</y>
+      <w>30</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>18;18;18;66</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1158</x>
+      <y>978</y>
+      <w>432</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>18;18;420;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1560</x>
+      <y>978</y>
+      <w>30</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>18;18;18;54</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>756</x>
+      <y>978</y>
+      <w>432</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>18;18;420;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>756</x>
+      <y>978</y>
+      <w>30</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>18;18;18;54</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1164</x>
+      <y>684</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-&lt;
+m1=   1
+m2=   1</panel_attributes>
+    <additional_attributes>18;108;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1326</x>
+      <y>618</y>
+      <w>108</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1= *
+m2= 1</panel_attributes>
+    <additional_attributes>18;18;96;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1422</x>
+      <y>24</y>
+      <w>222</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=-
+encapsulates</panel_attributes>
+    <additional_attributes>18;30;210;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1614</x>
+      <y>36</y>
+      <w>30</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>18;18;18;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1614</x>
+      <y>138</y>
+      <w>144</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>18;18;132;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1422</x>
+      <y>150</y>
+      <w>336</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=-
+encapsulates</panel_attributes>
+    <additional_attributes>18;30;324;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1590</x>
+      <y>312</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>18;18;48;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1620</x>
+      <y>192</y>
+      <w>30</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>18;138;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1620</x>
+      <y>180</y>
+      <w>138</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=-
+encapsulates</panel_attributes>
+    <additional_attributes>18;30;126;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1500</x>
+      <y>378</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;48;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1500</x>
+      <y>396</y>
+      <w>216</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.
+creates/uses</panel_attributes>
+    <additional_attributes>18;30;204;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1680</x>
+      <y>408</y>
+      <w>30</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;</panel_attributes>
+    <additional_attributes>18;18;18;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1302</x>
+      <y>222</y>
+      <w>30</w>
+      <h>228</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;216;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1164</x>
+      <y>408</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.
+creates/uses</panel_attributes>
+    <additional_attributes>18;30;156;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1164</x>
+      <y>420</y>
+      <w>30</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;</panel_attributes>
+    <additional_attributes>18;18;18;150</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>954</x>
+      <y>90</y>
+      <w>30</w>
+      <h>810</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;798;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>954</x>
+      <y>858</y>
+      <w>102</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+creates/uses</panel_attributes>
+    <additional_attributes>18;30;90;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>780</x>
+      <y>18</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=-
+uses</panel_attributes>
+    <additional_attributes>18;30;156;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>684</x>
+      <y>150</y>
+      <w>540</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=-
+uses</panel_attributes>
+    <additional_attributes>18;30;528;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>672</x>
+      <y>252</y>
+      <w>780</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=-
+uses</panel_attributes>
+    <additional_attributes>18;30;768;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1062</x>
+      <y>186</y>
+      <w>30</w>
+      <h>396</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>18;384;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>684</x>
+      <y>174</y>
+      <w>408</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.
+obtains/modifies</panel_attributes>
+    <additional_attributes>18;30;396;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>366</x>
+      <y>264</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;18;198;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>366</x>
+      <y>264</y>
+      <w>30</w>
+      <h>342</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;18;18;330</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>366</x>
+      <y>564</y>
+      <w>672</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+obtains/modifies</panel_attributes>
+    <additional_attributes>18;30;660;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>780</x>
+      <y>66</y>
+      <w>78</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;18;66;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>828</x>
+      <y>66</y>
+      <w>30</w>
+      <h>432</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>18;18;18;420</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>828</x>
+      <y>456</y>
+      <w>762</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.
+obtains/modifies</panel_attributes>
+    <additional_attributes>18;30;750;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1560</x>
+      <y>468</y>
+      <w>30</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>18;60;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>312</x>
+      <y>1086</y>
+      <w>30</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>18;18;18;96</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>756</x>
+      <y>1086</y>
+      <w>30</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>18;18;18;102</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>546</x>
+      <y>1158</y>
+      <w>240</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.
+creates</panel_attributes>
+    <additional_attributes>18;30;228;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>546</x>
+      <y>1188</y>
+      <w>642</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.
+creates</panel_attributes>
+    <additional_attributes>18;30;630;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1158</x>
+      <y>1092</y>
+      <w>30</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>18;18;18;126</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>546</x>
+      <y>1218</y>
+      <w>1044</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.
+creates</panel_attributes>
+    <additional_attributes>18;30;1032;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1560</x>
+      <y>1086</y>
+      <w>30</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>18;18;18;162</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1488</x>
+      <y>714</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=   1
+m2=   1</panel_attributes>
+    <additional_attributes>18;78;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1650</x>
+      <y>714</y>
+      <w>30</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=   1
+m2=   1</panel_attributes>
+    <additional_attributes>18;168;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1302</x>
+      <y>912</y>
+      <w>132</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>120;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>834</x>
+      <y>696</y>
+      <w>600</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>18;18;588;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>834</x>
+      <y>780</y>
+      <w>222</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>18;18;210;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1854</x>
+      <y>912</y>
+      <w>30</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=  1
+m2=  1</panel_attributes>
+    <additional_attributes>18;18;18;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1854</x>
+      <y>714</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m2= 1</panel_attributes>
+    <additional_attributes>18;18;18;78</additional_attributes>
+  </element>
+</diagram>
